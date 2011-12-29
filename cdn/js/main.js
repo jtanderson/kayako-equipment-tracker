@@ -1,0 +1,6 @@
+/*
+ * This is the main javascript file for the kayako site.
+ * Compressed using Google Closure: http://closure-compiler.appspot.com/home
+ */
+var MainObj={jAlert:function(a){var b=$("<div></div>");b.css("display","none");b.html(a);$("body").append(b);b.dialog({title:"Alert",modal:!0,minWidth:400,resizable:!1,draggable:!1,close:function(){$(this).remove()}})},logOut:function(){$.post("/homeAjax/logOut",{},function(a){a.success?location.href="/":alert("There has been an error while trying to log out.")},"json")},displayWarning:function(a){if(void 0!=a&&"string"==typeof a){var b=$("#message_container"),c=$("#DEFAULT_warning").clone(),d=$("#message_container").find("[id$=_warning]").not("#DEFAULT_warning").length;
+c.attr("id",d+"_warning");c.find(".warning_text").html(a);c.css("display","");b.append(c)}else console.log("Warning: displayWarning function called with unacceptable parameters.")},removeWarning:function(a){$(a).closest("div").detach()},clearWarnings:function(){$("#message_container").find(".message").not("#DEFAULT_warning").remove()},removeScriptTags:function(a){return a=(a+"").replace(/<(\/)?script[^>]*>/ig,"")}};

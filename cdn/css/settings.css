@@ -1,0 +1,65 @@
+.pref_title,
+.pref_value{
+	text-shadow:none;
+}
+
+legend{
+	padding: 0px;
+}
+
+legend span{
+	display: inline-block;
+	border: inherit;
+	padding: 12px 10px;
+	cursor: pointer;
+}
+
+legend span.current{
+	color: #d3d3d3;
+	background-color: #222;
+}
+
+legend span:hover{
+	color: #d3d3d3;
+	background-color: #222;
+}
+
+.pref_title{
+	background-color: #666;
+	border-top: 2px solid #333;
+	border-left: 2px solid #333;
+	border-bottom: 2px solid #333;
+	width: 15%;
+	text-align: center;
+}
+
+.pref_value{
+	border-top: 2px solid #333;
+	border-right: 2px solid #333;
+	border-bottom: 2px solid #333;
+	width: 35%;
+	text-align: center;height: 40px;
+	padding-right: 2px;
+	padding-left: 1px;
+	background-color:  #e3e3e3;
+}
+
+.pref_table{
+	border-collapse: collapse;
+	width: 100%;
+}
+
+.pref_table td{
+	font-size: 12pt;
+	font-family: Helvetica, Arial, sans-serif;
+}
+
+.pref_table input[type=text]{
+	height: 100%;
+	width: 100%;
+	border: none;
+	text-align: center;
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 12pt;
+	background-color: #FCFFBF;
+}

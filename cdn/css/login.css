@@ -1,0 +1,85 @@
+.login_box{
+	text-align: center;
+	border: 2px solid black;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	width: 350px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 50px;
+	font-family: Arial, Helvetica, sans-serif;
+	background-image: none;
+	background-color: #89A7C9;
+}
+
+.login_box table{
+	margin: 20px;
+}
+
+.login_box input[type=text],
+.login_box input[type=password]{
+	padding: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border: 2px solid #6b6b6b;
+	font-size: 14pt;
+}
+
+.login_box input[type=button]{
+	float: right;
+}
+
+#bad_login{
+	display: none;
+	padding: 10px;
+	font-weight: bold;
+	color: red;
+}
+
+.big_logo{
+	height: 175px;
+	width: 150px;
+}
+
+#browser_warning{
+	display: none;
+	background-color: #FFFD96;
+	border: 2px solid #333;
+	font-size: 11pt;
+	text-align: left;
+	margin: 20px 25px 10px 25px;
+	padding: 10px;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+
+#browser_warning .warn_head{
+	font-weight: bold;
+	display: block;
+	text-align: center;
+	text-transform: uppercase;
+	padding-bottom: 5px;
+	border-bottom: 1px dotted #333;
+}
+
+#browser_warning .warn_body{
+	padding-top: 5px;
+	font-size: 11pt;
+}
+
+#browser_warning .expansion a,
+#browser_warning .expansion a:hover,
+#browser_warning .expansion a:visited{
+	color: black;
+	text-decoration: none;
+}
+
+#warning_details h4{
+	margin-top: 15px;
+	margin-bottom: 5px;
+}
+
+#warning_details{
+	font-size: 11pt;
+}
