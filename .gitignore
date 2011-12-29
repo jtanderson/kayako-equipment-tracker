@@ -1,0 +1,2 @@
+# Do not include Aptana (or Eclipse) project configuration files
+.project
