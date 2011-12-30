@@ -40,19 +40,18 @@
 	 */
 	function index(){
 		if ( ! $this->session->userdata('logged_in') ){
+            $this->carabiner->js('js/' . ( ENVIRONMENT == 'development' ? '_uncompressed/' : '' ) . 'login.js');
 			$this->load->view('login', $this->DocumentArray);
 		} else {
-            $this->load->library('Kayako');
-            try{
-                $this->DocumentArray['Priorities'] = $this->kayako->getTicketPriorities();
-                $this->DocumentArray['Departments'] = $this->kayako->getDepartments();
-            } catch ( Exception $e ){
-                $this->DocumentArray['Priorities'] = Array();
-                $this->DocumentArray['Departments'] = Array();
-                $this->DocumentArray['Errors'] []= "The system is not connected to the Kayako Fusion Server. Try <a href=\"javascript:location.reload();\">refreshing</a>.";
-                log_message('error', "Kayako Error: " . $e->getMessage());
-            }
-			$this->load->view('home', $this->DocumentArray);
+		    // TODO: load priority and department options from Database
+		    $this->carabiner->js('js/' . ( ENVIRONMENT == 'development' ? '_uncompressed/' : '' ) . 'home.js');
+            
+		    $this->load->model('Priority');
+            $this->load->model('Department');
+            $this->DocumentArray['Departments'] = $this->Department->find_all();
+            $this->DocumentArray['Priorities'] = $this->Priority->find_all();
+            $this->views['home'] = $this->DocumentArray;
+			// $this->load->view('home', $this->DocumentArray);
 		}
 	}
     
@@ -69,7 +68,27 @@
          $this->load->model('User');
          $this->DocumentArray['UserData'] = $this->User->getUserData($UserID);
          
-         $this->load->view('settings.php', $this->DocumentArray);
+         $this->load->model('Setting');
+         $this->load->helper('Array');
+         $SettingArray = $this->Setting->getSettingsForUser($UserID);
+         $SettingArray = associate_by('U_Title', $SettingArray);
+         
+         $SettingsToLoad = Array(
+            'DefaultTicketDepartment',
+            'DefaultTicketPriority'
+         );
+         
+         $this->DocumentArray['Settings'] = Array();
+         foreach ( $SettingsToLoad as $key => $setting ){
+             if ( is_array($SettingArray[$setting]) ){
+                 $this->DocumentArray['Settings'][$setting] = $SettingArray[$setting]['Value'] == NULL ? $SettingArray[$setting]['Value'] : $SettingArray[$setting]['Value'];
+             }
+         }
+         
+         $this->carabiner->js('js/' . ( ENVIRONMENT == 'development' ? '_uncompressed/' : '' ) . 'settings.js');
+         
+         $this->views['settings'] = $this->DocumentArray;
+         // $this->load->view('settings.php', $this->DocumentArray);
      }
      
 	

@@ -8,7 +8,6 @@
  * @version 2011-09-30
  */
 ?>
-<script type="text/javascript" src="/cdn/js/<?php echo ( ENVIRONMENT == 'development' ? '_uncompressed/' : '' ); ?>login.js"></script>
 <div class="login_box">
 	<h2>Saint Vincent Service Desk Extension</h2>
 	<img class="big_logo" src="/cdn/img/shield.gif"/>

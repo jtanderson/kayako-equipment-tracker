@@ -97,8 +97,11 @@ SettingsObj.setPrefTableInputs = function(){
 SettingsObj.saveSettings = function(){
 	postData = {};
 	$('.pref_table').find('td.pref_value.hybrid input').blur();
-	$('.pref_value > span').each( function(){
-		postData[$(this).attr('id')] = $(this).html();
+	$('#prefs_user .pref_value > span').each( function(){
+		postData['UserData[' + $(this).attr('id') + ']'] = $(this).html();
+	});
+	$('.pref_table').not('#prefs_user').find('.pref_value > span').each( function(){
+		postData['Settings[' + $(this).attr('id') + ']'] = $(this).html();
 	});
 	postData['PK_UserNum'] = $('#PK_UserNum').val();
 	$.post('/homeAjax/updateSettings', postData, function(json){

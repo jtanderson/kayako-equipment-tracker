@@ -10,7 +10,6 @@
  * @version 2011-12-23
  */
 ?>
- <script type="text/javascript" src="/cdn/js/<?php echo ( ENVIRONMENT == "development" ? "_uncompressed/" : "" ); ?>settings.js"></script>
  <div class="main-panel">
     <input type="hidden" id="PK_UserNum" value="<?php echo $this->session->userdata('LocalID');?>"/>
     <div id="message_container">
@@ -34,43 +33,43 @@
             <table id="prefs_user" class="pref_table">
                 <tr>
                     <td class="pref_title"><span>First Name</span></td>
-                    <td class="pref_value hybrid"><span id="UserData[First]"><?php echo $UserData['First'];?></span></td>
+                    <td class="pref_value hybrid"><span id="First"><?php echo $UserData['First'];?></span></td>
                     <td class="pref_title"><span>Last Name</span></td>
-                    <td class="pref_value hybrid"><span id="UserData[Last]"><?php echo $UserData['Last'];?></span></td>
+                    <td class="pref_value hybrid"><span id="Last"><?php echo $UserData['Last'];?></span></td>
                 </tr>
                 <tr>
                     <td class="pref_title"><span>Username</span></td>
-                    <td class="pref_value hybrid"><span id="UserData[U_Username]"><?php echo $UserData['U_Username'];?></span></td>
+                    <td class="pref_value hybrid"><span id="U_Username"><?php echo $UserData['U_Username'];?></span></td>
                     <td class="pref_title"><span>Email</span></td>
-                    <td class="pref_value hybrid"><span id="UserData[Email]"><?php echo $UserData['Email'];?></span></td>
+                    <td class="pref_value hybrid"><span id="Email"><?php echo $UserData['Email'];?></span></td>
                 </tr>
             </table>
             <table id="prefs_system" class="pref_table" style="display: none;">
                 <tr>
                     <td class="pref_title"><span>Default Ticket Priority</span></td>
-                    <td class="pref_value hybrid"><span id="Settings[DefaultTicketPriority]"><?php echo $UserData['First'];?></span></td>
+                    <td class="pref_value hybrid"><span id="DefaultTicketPriority"><?php echo $Settings['DefaultTicketPriority'];?></span></td>
                     <td class="pref_title"><span>Default Ticket Department</span></td>
-                    <td class="pref_value hybrid"><span id="Settings[DefaultTicketDepartment]"><?php echo $UserData['Last'];?></span></td>
+                    <td class="pref_value hybrid"><span id="DefaultTicketDepartment"><?php echo $Settings['DefaultTicketDepartment'];?></span></td>
                 </tr>
                 <tr>
                     <td class="pref_title"><span>Color Theme</span></td>
-                    <td class="pref_value hybrid"><span id="Settings[Theme]"><?php echo $UserData['U_Username'];?></span></td>
+                    <td class="pref_value hybrid"><span id="Theme"><?php echo '';?></span></td>
                     <td class="pref_title"><span>Some Other Option</span></td>
-                    <td class="pref_value hybrid"><span id="Settings[Other]"><?php echo $UserData['Email'];?></span></td>
+                    <td class="pref_value hybrid"><span id="Other"><?php echo '';?></span></td>
                 </tr>
             </table>
             <table id="prefs_security" class="pref_table" style="display: none;">
                 <tr>
                     <td class="pref_title"><span>Permissions?</span></td>
-                    <td class="pref_value hybrid"><span id="Settings[Permission]"><?php echo $UserData['First'];?></span></td>
+                    <td class="pref_value hybrid"><span id="Permission"><?php echo '';?></span></td>
                     <td class="pref_title"><span>Password</span></td>
-                    <td class="pref_value hybrid"><span id="Settings[Password]"><?php echo $UserData['Last'];?></span></td>
+                    <td class="pref_value hybrid"><span id="Password"><?php echo '';?></span></td>
                 </tr>
                 <tr>
                     <td class="pref_title"><span>API Key</span></td>
-                    <td class="pref_value hybrid"><span id="Settings[APIKey]"><?php echo $UserData['U_Username'];?></span></td>
+                    <td class="pref_value hybrid"><span id="APIKey"><?php echo '';?></span></td>
                     <td class="pref_title"><span>API Secret Key</span></td>
-                    <td class="pref_value hybrid"><span id="Settings[APISecretKey]"><?php echo $UserData['Email'];?></span></td>
+                    <td class="pref_value hybrid"><span id="APISecretKey"><?php echo '';?></span></td>
                 </tr>
             </table>
         </fieldset>

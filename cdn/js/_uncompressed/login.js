@@ -41,7 +41,7 @@ LoginObj.submitLogin = function(){
 			$('#Username').focus();
 		}
 		$('#login_button').removeAttr('disabled');
-		$('#login_button').val('Login');
+		// $('#login_button').val('Login');
 	}, 'json');
 }
 

@@ -28,30 +28,31 @@ class MY_Model extends CI_Model {
             }
         }
  
-        function find_id($id)
+        function find($whereArray)
         {
-                if ($id == NULL)
+                if ($whereArray == NULL)
                 {
                         return NULL;
                 }
  
-                $this->db->where('id', $id);
+                $this->db->where($whereArray);
                 $query = $this->db->get($this->table);
  
                 $result = $query->result_array();
                 return (count($result) > 0 ? $result[0] : FALSE);
         }
  
-        function find_all($sort = 'id', $order = 'asc')
+        function find_all()
         {
-                $this->db->order_by($sort, $order);
-                $query = $this->db->get($this->table);
+                $this->db->select('*');
+                $this->db->from($this->table);
+                $query = $this->db->get();
                 return $query->num_rows > 0 ? $query->result_array(): FALSE;
         }
  
-        function update($id, $data)
+        function update($where, $data)
         {
-                $this->db->where('id', $id);
+                $this->db->where($where);
                 $this->db->update($this->table, $data);
         }
         

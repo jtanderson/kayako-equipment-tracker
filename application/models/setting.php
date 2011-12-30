@@ -16,13 +16,23 @@
      function getPKFromTitle($Title){
          $this->db->select('PK_SettingNum');
          $this->db->from($this->table);
-         $this->db->where('U_Title', $Title);
+         $this->db->where(Array('U_Title' => $Title));
          $query = $this->db->get();
          if ( $query->num_rows() == 1 ){
-             $arr = current($query->result_array());
+             $arr = $query->row_array();
              return $arr['PK_SettingNum'];
          } else {
              return FALSE;
          }
+     }
+     
+     function getSettingsForUser($UserPK){
+         $this->db->select('*');
+         $this->db->from('TB_Setting S');
+         $this->db->join('TB_UserSetting US', 'S.PK_SettingNum = US.PKb_SettingNum', 'left');
+         $this->db->where(Array('US.PKa_UserNum'=>$UserPK));
+         $this->db->or_where(Array('US.PKa_UserNum' => NULL));
+         $query = $this->db->get();
+         return $query->num_rows() > 0 ? $query->result_array() : FALSE;
      }
  }

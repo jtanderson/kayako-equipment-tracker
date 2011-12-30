@@ -8,7 +8,6 @@
  * 
  */
  ?>
- <script type="text/javascript" src="/cdn/js/<?php echo ( ENVIRONMENT == 'development' ? '_uncompressed/' : '' ); ?>home.js"></script>
  <div class="main-panel">
 	<div id="message_container">
 		<div id="DEFAULT_warning" style="display:none;" class="message">
@@ -124,7 +123,7 @@
 						<td>
 							<select name="Priority"	id="Priority">
 								<?php foreach ( $Priorities as $priority ){ ?>
-								<option value="<?php echo $priority->getId();?>"><?php echo $priority->getTitle(); ?></option>									
+								<option value="<?php echo $priority['FusionID'];?>"><?php echo $priority['U_Title']; ?></option>									
 								<?php } ?>
 							</select>
 							<script type="text/javascript">
@@ -134,7 +133,7 @@
 						<td style="padding-left: 110px;">
 							<select name="Department" id="Department">
 								<?php foreach ( $Departments as $department ){ ?>
-								<option value="<?php echo $department->getId();?>"><?php echo $department->getTitle(); ?></option>									
+								<option value="<?php echo $department['FusionID'];?>"><?php echo $department['U_Title']; ?></option>									
 								<?php } ?>
 							</select>
 							<script type="text/javascript">

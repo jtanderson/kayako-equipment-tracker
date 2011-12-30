@@ -153,7 +153,7 @@ abstract class kyBase {
 			CURLOPT_RETURNTRANSFER => true,
 			CURLOPT_SSL_VERIFYPEER => false,
 			CURLOPT_SSL_VERIFYHOST => false,
-			CURLOPT_CONNECTTIMEOUT => 1,
+			CURLOPT_CONNECTTIMEOUT => 30,
 			CURLOPT_FORBID_REUSE => true,
 			CURLOPT_FRESH_CONNECT => true,
 			CURLOPT_URL => $request_data['url'],

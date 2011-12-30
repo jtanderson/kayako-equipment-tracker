@@ -66,17 +66,28 @@
 				'LocalID' => $id
 			);
 			$this->session->set_userdata($sess_data);
-       /* 
-        } else if ( $this->User->authenticate($username, md5($password)) ){
-			$this->DocumentArray['success'] = TRUE;
-            $id = $this->User->getUserPKFromUName($username);
-			$sess_data = array(
-				'username' => $username,
-				'logged_in' => TRUE,
-                'LocalID' => $id
-			);
-			$this->session->set_userdata($sess_data); 
-            */
+            
+            $this->load->library('Kayako');
+            try{
+                $PriorityArray = $this->kayako->getTicketPriorities() ?: Array();
+                $this->load->model('Priority');
+                $newValues = Array();
+                foreach ( $PriorityArray as $priority ){
+                    $newValues[$priority->getId()] = $priority->getTitle();
+                }
+                $this->Priority->refreshTable($newValues);
+                
+                $DepartmentArray = $this->kayako->getDepartments() ?: Array();
+                $this->load->model('Department');
+                $newValues = Array();
+                foreach ( $DepartmentArray as $department ){
+                    $newValues[$department->getId()] = $department->getTitle();
+                }
+                $this->Department->refreshTable($newValues);
+            } catch ( Exception $e ){
+                $this->DocumentArray['Errors'] []= "The system could not connect to the Kayako Fusion Server. Try <a href=\"javascript:location.reload();\">refreshing</a>.";
+                log_message('error', "Kayako Error: " . $e->getMessage());
+            }
 		} else {
 			$this->DocumentArray['success'] = FALSE;
 			$this->DocumentArray['message'] = "Authentication Failed";
@@ -323,6 +334,8 @@
 		$renderer = Zend_Barcode::factory($config);
         $pdfWithBarcode = Zend_Barcode::factory($config)->setResource($pdf)->draw();
         
+        // TODO: make sure this stuff works...
+        
         $pdfWithBarcode->save(APPBASEPATH . '../cdn/pdf/' . $text);
         $this->load->model('Ticket');
         $this->Ticket->update(Array('PDFPath'=>APPBASEPATH . '../cdn/pdf/' . $text));
@@ -338,22 +351,23 @@
         $this->load->model('User');
         $this->load->model('Setting');
         $this->load->model('UserSetting');
-        // $this->User->update($PKUserNum, $UserProfileArray);
+        $this->User->update(Array('PK_UserNum'=>$PKUserNum), $UserProfileArray);
         
         // TODO: Finish saving settings to the database.
         // TODO: Decide on how to arrange the settings: categories, or all just generic settings? For now, all fields not on the TB_User table will fall into the Settings array
         
         foreach ( $SettingsArray as $title => $value ){
-            $settingPK = $this->Setting->getPKFromTitle($title);
-            if ( ! $this->UserSetting->find_where(Array('PKa_UserNum'=>$PKUserNum, 'PKb_SettingNum'=>$settingPK)) ){
-                $this->UserSetting->create(Array('PKa_UserNum'=>$PKUserNum, 'PKb_SettingNum'=>$settingPK, 'Value'=>$value));
-            } else {
-                $this->UserSetting->update_where(Array('PKa_UserNum'=>$PKUserNum, 'PKb_SettingNum'=>$settingPK), Array('Value'=>$value));
+            if ( $settingPK = $this->Setting->getPKFromTitle($title) ){
+                if ( ! $this->UserSetting->find_where(Array('PKa_UserNum'=>$PKUserNum, 'PKb_SettingNum'=>$settingPK)) ){
+                    $this->UserSetting->insert(Array('PKa_UserNum'=>$PKUserNum, 'PKb_SettingNum'=>$settingPK, 'Value'=>$value));
+                } else {
+                    $this->UserSetting->update_where(Array('PKa_UserNum'=>$PKUserNum, 'PKb_SettingNum'=>$settingPK), Array('Value'=>$value));
+                }
             }
         }
         
         $this->DocumentArray['success'] = TRUE;
-        $this->output->append_output($this->DocumentArray);
+        $this->output->append_output(json_encode($this->DocumentArray));
     }
 	
 	function __finalize(){

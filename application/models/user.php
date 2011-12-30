@@ -35,7 +35,7 @@
         $this->db->from('TB_User');
         $this->db->where('PK_UserNum', $ID);
         $query = $this->db->get();
-        return $query->num_rows() > 0 ? current($query->result_array()) : FALSE;
+        return $query->num_rows() > 0 ? $query->row_array() : FALSE;
     }
     
     function getUserPKFromUName($username){
@@ -44,8 +44,8 @@
         $this->db->where('U_Username', $username);
         $query = $this->db->get();
         if ( $query->num_rows() == 1 ){
-            $queryArray = $query->result_array();
-            return $queryArray[0]['PK_UserNum'];
+            $queryArray = $query->row_array();
+            return $queryArray['PK_UserNum'];
         } else {
             return FALSE;
         }

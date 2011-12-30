@@ -1,2 +1,6 @@
 # Do not include Aptana (or Eclipse) project configuration files
 .project
+cookie.txt
+application/logs/*.php
+cookie.txt
+cookie.txt
