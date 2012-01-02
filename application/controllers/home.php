@@ -41,7 +41,7 @@
 	function index(){
 		if ( ! $this->session->userdata('logged_in') ){
             $this->carabiner->js('js/' . ( ENVIRONMENT == 'development' ? '_uncompressed/' : '' ) . 'login.js');
-			$this->load->view('login', $this->DocumentArray);
+			$this->views['login'] = $this->DocumentArray;
 		} else {
 		    // TODO: load priority and department options from Database
 		    $this->carabiner->js('js/' . ( ENVIRONMENT == 'development' ? '_uncompressed/' : '' ) . 'home.js');
@@ -71,17 +71,19 @@
          $this->load->model('Setting');
          $this->load->helper('Array');
          $SettingArray = $this->Setting->getSettingsForUser($UserID);
-         $SettingArray = associate_by('U_Title', $SettingArray);
+         if ( $SettingArray != FALSE ){
+            $SettingArray = associate_by('U_Title', $SettingArray);
          
-         $SettingsToLoad = Array(
-            'DefaultTicketDepartment',
-            'DefaultTicketPriority'
-         );
-         
-         $this->DocumentArray['Settings'] = Array();
-         foreach ( $SettingsToLoad as $key => $setting ){
-             if ( is_array($SettingArray[$setting]) ){
-                 $this->DocumentArray['Settings'][$setting] = $SettingArray[$setting]['Value'] == NULL ? $SettingArray[$setting]['Value'] : $SettingArray[$setting]['Value'];
+             $SettingsToLoad = Array(
+                'DefaultTicketDepartment',
+                'DefaultTicketPriority'
+             );
+             
+             $this->DocumentArray['Settings'] = Array();
+             foreach ( $SettingsToLoad as $key => $setting ){
+                 if ( is_array($SettingArray[$setting]) ){
+                     $this->DocumentArray['Settings'][$setting] = $SettingArray[$setting]['Value'] ? $SettingArray[$setting]['Value'] : $SettingArray[$setting]['Default'];
+                 }
              }
          }
          

@@ -23,8 +23,19 @@ var LoginObj = {};
  */
 
 LoginObj.submitLogin = function(){
+	$.blockUI({ css: { 
+        border: 'none', 
+        padding: '15px', 
+        backgroundColor: '#000', 
+        '-webkit-border-radius': '10px', 
+        '-moz-border-radius': '10px', 
+        opacity: .7, 
+        color: '#fff' 
+    	},
+    	message: '<h1 style="color: inherit;">Please Wait...</h1>'
+    });
 	$('#login_button').attr('disabled', 'disabled');
-	$('#login_button').val('Please Wait...');
+	// $('#login_button').val('Please Wait...');
 	postData = {};
 	postData['Username'] = $('#Username').val();
 	postData['Password'] = $('#Password').val();
@@ -37,6 +48,7 @@ LoginObj.submitLogin = function(){
 			}
 			location.reload();
 		} else {
+			$.unblockUI();
 			$('#bad_login').slideDown(500);
 			$('#Username').focus();
 		}

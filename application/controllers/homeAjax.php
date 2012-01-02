@@ -171,8 +171,12 @@
 		$this->form_validation->set_rules('Department', 'Department', 'trim|required');
 		
 		if ( $this->form_validation->run() ){
+		    $this->load->model('Department');
+            $this->load->model('Priority');
 			$InsertArray = $this->input->post();
 			$InsertArray['Staff'] = $this->session->userdata('StaffID');
+            $InsertArray['FK_DepartmentNum'] = $this->Department->getPKFromFusionID($InsertArray['Department']);
+            $InsertArray['FK_PriorityNum'] = $this->Priority->getPKFromFusionID($InsertArray['Priority']);
 			
 			$this->load->model('Ticket');
 			if ( $TicketID = $this->Ticket->createTicket($InsertArray) ){
@@ -231,8 +235,8 @@
 			$Subject = $TicketData['Subject'];
 			
 			$StaffID = $TicketData['Staff'];
-			$DepartmentID = $TicketData['Department'];
-			$PriorityID = $TicketData['Priority'];
+			$DepartmentID = $TicketData['DepartmentFusionID'];
+			$PriorityID = $TicketData['PriorityFusionID'];
 			
 			$ContentFormat = "Ticket for user: %s %s ".PHP_EOL.
 			"Phone Number: %s".PHP_EOL.
@@ -267,7 +271,7 @@
                 $this->load->library('Kayako');
                 $FusionID = $this->kayako->createTicket($TicketConfig);
                 
-                $this->Ticket->update($LocalTicketID, Array('FusionID'=>$FusionID));
+                $this->Ticket->update(Array('PK_TicketNum'=> $LocalTicketID), Array('TicketFusionID'=>$FusionID));
                 
 				$this->DocumentArray['TicketID'] = $FusionID;
 				$this->DocumentArray['success'] = TRUE;
@@ -310,9 +314,9 @@
 		$this->zend->load('Zend/Barcode');
         $this->zend->load('Zend/Config');
         $this->zend->load('Zend/Pdf');
+        // $this->zend->load('Zend/Barcode/Object/ObjectAbstract');
 		$this->zend->load('Zend/Barcode/Renderer/Image');
-        
-        $pdf = new Zend_Pdf();
+        $this->zend->load('Zend/Barcode/Renderer/Pdf');
 		
 		// $text = $this->input->get('barcode_text');
 		// $text = $this->input->post('text');
@@ -323,24 +327,46 @@
 		if ( $text == '' ){
 			$text = 'DEFAULT';
 		}
+        
+        $this->load->helper('path');
+        $fontPath = set_realpath(APPBASEPATH . '../cdn/fonts/') . 'Arial.ttf';
+        $barcodeType = 'Code128';
 		
 		$config = new Zend_Config(array(
-            'barcode'        => 'Code128',
+            'barcode'        => $barcodeType,
             'barcodeParams'  => array('text' => $text),
             'renderer'       => 'image',
-            'rendererParams' => array('imageType' => 'gif'),
+            'rendererParams' => array('imageType' => 'gif', 'font' => $fontPath),
         ));
-			
-		$renderer = Zend_Barcode::factory($config);
-        $pdfWithBarcode = Zend_Barcode::factory($config)->setResource($pdf)->draw();
         
-        // TODO: make sure this stuff works...
+        $PDFconfig = new Zend_Config(array(
+            'barcode'        => $barcodeType,
+            'barcodeParams'  => array('text' => $text, 'font' => $fontPath),
+            'renderer'       => 'pdf',
+            'rendererParams' => array(),
+        ));
         
-        $pdfWithBarcode->save(APPBASEPATH . '../cdn/pdf/' . $text);
-        $this->load->model('Ticket');
-        $this->Ticket->update(Array('PDFPath'=>APPBASEPATH . '../cdn/pdf/' . $text));
-		
-		$this->output->append_output($renderer->render());
+        $renderer = Zend_Barcode::factory($config);
+        $this->output->append_output($renderer->render());
+        
+        try{
+            $pdf = new Zend_Pdf();
+            // $page = new Zend_Pdf_Page($renderer->draw());
+            $objName = 'Zend_Barcode_Object_'.$barcodeType;
+            
+            $barcodeObj = new $objName(array('text' => $text));
+            $page = new Zend_Pdf_Page($barcodeObj->getWidth(), $barcodeObj->getHeight());
+            $pdf->pages[] = $page;
+            $pdfWithBarcode = Zend_Barcode::factory($PDFconfig)->setResource($pdf)->draw();
+            
+            // TODO: make sure this stuff works...
+            $myPath = set_realpath(APPBASEPATH . '../cdn/pdf');
+            $pdfWithBarcode->save($myPath . '/' . $text . '.pdf');
+            $this->load->model('Ticket');
+            $this->Ticket->update(Array('TicketFusionID' => $text), Array('BarcodePDFPath'=>$myPath . '/' . $text . '.pdf'));
+        } catch ( Exception $e ){
+            log_message('error', $e->getMessage());
+        }
 	}
 
     function updateSettings(){
@@ -367,10 +393,10 @@
         }
         
         $this->DocumentArray['success'] = TRUE;
-        $this->output->append_output(json_encode($this->DocumentArray));
+        $this->output->set_output(json_encode($this->DocumentArray));
     }
 	
 	function __finalize(){
-		parent::__finalize();
+		// parent::__finalize();
 	}
  }

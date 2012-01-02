@@ -4,3 +4,5 @@ cookie.txt
 application/logs/*.php
 cookie.txt
 cookie.txt
+application/cache
+cdn/cache

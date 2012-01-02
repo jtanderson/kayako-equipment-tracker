@@ -14,10 +14,10 @@
     
  	function __construct(){
  		parent::__construct();
-        $this->output->cache(15);
         // $this->output->enable_profiler(TRUE);
 		
 		if ( ! $this->input->is_ajax_request() ){
+            // $this->output->cache(15);
 			$DocumentArray = array();
             $carabiner_config = array(
                 'script_dir' => 'cdn/', 
@@ -37,6 +37,7 @@
             $this->carabiner->js('js/jquery/jquery.mydropdown.min.js');
             $this->carabiner->js('js/jquery/jquery.collapse.min.js');
             $this->carabiner->js('js/jquery/jquery.client.min.js');
+            $this->carabiner->js('js/jquery/jquery.blockUI.min.js');
             $this->carabiner->js('js/' . ( ENVIRONMENT == 'development' ? '_uncompressed/' : '' ) . 'main.js');
             
             if ( $this->session->userdata('logged_in') ){
@@ -52,13 +53,14 @@
  	}
 	
 	function __finalize(){
-	    
-        foreach ( $this->views as $view => $data ){
-            $this->load->view($view, $data);
-        }
-        
 		if ( ! $this->input->is_ajax_request() ){
+            foreach ( $this->views as $view => $data ){
+                $this->load->view($view, $data);
+                log_message('debug', 'Loading view: ' . $view);
+            }
 			$this->load->view('footer');
+            log_message('debug', 'Loading view: footer');
+            $this->carabiner->empty_cache('both', 'yesterday'); 
 		}
 	}
  }

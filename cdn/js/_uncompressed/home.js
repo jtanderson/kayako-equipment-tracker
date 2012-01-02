@@ -238,7 +238,7 @@ HomeObj.removeEquipment = function(obj){
 		return parseInt($(a).attr('id').match(/\d+/)) - parseInt($(b).attr('id').match(/\d+/));
 	});
 	for ( var i = 1; i <= count; i++ ){
-		$(allVisibleRows[i-1]).attr('id', 'equipment_'+i);
+		$(allVisibleRows[i-1]).attr('id', 'Equipment_'+i);
 		if ( $(allVisibleRows[i-1]).find('.equipment_banner span').hasClass('unchanged') ){
 			$(allVisibleRows[i-1]).find('.equipment_banner span').html('[Equipment_'+i+']');
 		}

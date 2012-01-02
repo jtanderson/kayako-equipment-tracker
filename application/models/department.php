@@ -17,10 +17,24 @@
      
      function refreshTable($currentValues){
          $this->db->trans_start();
-         $this->db->empty_table($this->table);
          foreach ( $currentValues as $id => $value ){
-             $this->insert(Array('U_Title'=>$value, 'FusionID'=>$id));
+             if ( ! $this->find_where(Array('U_DepartmentTitle'=>$value, 'DepartmentFusionID'=>$id)) ){
+                $this->insert(Array('U_DepartmentTitle'=>$value, 'DepartmentFusionID'=>$id));
+             }
          }
          $this->db->trans_complete();
+     }
+     
+     function getPKFromFusionID($id){
+         $this->db->select('PK_DepartmentNum');
+         $this->db->from($this->table);
+         $this->db->where('DepartmentFusionID', $id);
+         $query = $this->db->get();
+         if ( $query->num_rows() == 1 ){
+             $arr = $query->row_array();
+             return $arr['PK_DepartmentNum'];
+         } else {
+             return FALSE;
+         }
      }
  }

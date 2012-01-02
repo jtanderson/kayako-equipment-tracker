@@ -56,7 +56,8 @@ MainObj.jAlert = function(text){
  */
 MainObj.logOut = function(){
 	$.post('/homeAjax/logOut', {}, function(json){
-		if ( json.success ){
+		console.log(json);
+		if ( json.success != undefined && json.success ){
 			location.href="/";
 		} else {
 			alert('There has been an error while trying to log out.');

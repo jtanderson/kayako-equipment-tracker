@@ -123,7 +123,7 @@
 						<td>
 							<select name="Priority"	id="Priority">
 								<?php foreach ( $Priorities as $priority ){ ?>
-								<option value="<?php echo $priority['FusionID'];?>"><?php echo $priority['U_Title']; ?></option>									
+								<option value="<?php echo $priority['PriorityFusionID'];?>"><?php echo $priority['U_PriorityTitle']; ?></option>									
 								<?php } ?>
 							</select>
 							<script type="text/javascript">
@@ -133,7 +133,7 @@
 						<td style="padding-left: 110px;">
 							<select name="Department" id="Department">
 								<?php foreach ( $Departments as $department ){ ?>
-								<option value="<?php echo $department['FusionID'];?>"><?php echo $department['U_Title']; ?></option>									
+								<option value="<?php echo $department['DepartmentFusionID'];?>"><?php echo $department['U_DepartmentTitle']; ?></option>									
 								<?php } ?>
 							</select>
 							<script type="text/javascript">

@@ -29,8 +29,10 @@
 	function getTicketData($TicketPK){
 		$this->db->select('*');
 		$this->db->from('TB_Ticket');
-		$this->db->where(array('PK_TicketNum'=>$TicketPK));
+        $this->db->join('TB_Priority', 'TB_Priority.PK_PriorityNum = TB_Ticket.FK_PriorityNum');
+        $this->db->join('TB_Department', 'TB_Department.PK_DepartmentNum = TB_Ticket.FK_DepartmentNum');
+		$this->db->where(Array('TB_Ticket.PK_TicketNum'=>$TicketPK));
 		$query = $this->db->get();
-		return $query->num_rows() == 1 ? current($query->result_array()) : FALSE;
+		return $query->num_rows() == 1 ? $query->row_array() : FALSE;
 	}
  }

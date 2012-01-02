@@ -19,7 +19,7 @@
  *
  */
 	define('ENVIRONMENT', 'development');
-	define('APPBASEPATH', '/Users/moose6723/Documents/Dev/kayako/application/');
+	define('APPBASEPATH', '/Users/moose6723/Documents/Dev/kayako-equipment-tracker/application/');
 	
 	date_default_timezone_set('America/New_York');
 /*
