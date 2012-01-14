@@ -19,6 +19,7 @@
 		if ( ! $this->input->is_ajax_request() ){
             // $this->output->cache(15);
 			$DocumentArray = array();
+            $this->load->library('carabiner');
             $carabiner_config = array(
                 'script_dir' => 'cdn/', 
                 'style_dir'  => 'cdn/',
@@ -27,6 +28,7 @@
                 'dev'        => FALSE
             );
             $this->carabiner->config($carabiner_config);
+            // $this->carabiner->css('css/reset.css');
             $this->carabiner->css('css/main.css');
             $this->carabiner->css('css/mydropdown.css');
             $this->carabiner->css('js/jquery/jquery-ui/css/dot-luv/jquery-ui-1.8.13.custom.css');

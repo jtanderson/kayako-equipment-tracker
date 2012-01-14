@@ -309,17 +309,14 @@
 	 * @param String $text The text to be used to create a bar code
 	 */
 	
-	function createBarcode($text){
+	function createBarcode(){
 		$this->load->library('zend');
 		$this->zend->load('Zend/Barcode');
         $this->zend->load('Zend/Config');
-        $this->zend->load('Zend/Pdf');
-        // $this->zend->load('Zend/Barcode/Object/ObjectAbstract');
 		$this->zend->load('Zend/Barcode/Renderer/Image');
-        $this->zend->load('Zend/Barcode/Renderer/Pdf');
 		
 		// $text = $this->input->get('barcode_text');
-		// $text = $this->input->post('text');
+		$text = $this->input->post('text');
 		$text = urldecode($text);  // In case there are spaces or other url encoded characters
 		$text = strtoupper($text); // Many barcodes will not accept lower case
 		$text = preg_replace('/[ ]/', '-', $text); // Most bar codes do not allow spaces - replace with a hyphen
@@ -339,34 +336,25 @@
             'rendererParams' => array('imageType' => 'gif', 'font' => $fontPath),
         ));
         
-        $PDFconfig = new Zend_Config(array(
-            'barcode'        => $barcodeType,
-            'barcodeParams'  => array('text' => $text, 'font' => $fontPath),
-            'renderer'       => 'pdf',
-            'rendererParams' => array(),
-        ));
-        
-        $renderer = Zend_Barcode::factory($config);
-        $this->output->append_output($renderer->render());
         
         try{
-            $pdf = new Zend_Pdf();
-            // $page = new Zend_Pdf_Page($renderer->draw());
-            $objName = 'Zend_Barcode_Object_'.$barcodeType;
+            $renderer = Zend_Barcode::factory($config);
             
-            $barcodeObj = new $objName(array('text' => $text));
-            $page = new Zend_Pdf_Page($barcodeObj->getWidth(), $barcodeObj->getHeight());
-            $pdf->pages[] = $page;
-            $pdfWithBarcode = Zend_Barcode::factory($PDFconfig)->setResource($pdf)->draw();
+            $myPath = set_realpath(APPBASEPATH . '../cdn/img/barcodes');
+            $img = Zend_Barcode::draw(
+                $barcodeType, 'image', array('text' => $text), array()
+            );
+            imagegif($img, $myPath . $text . '.gif');
             
-            // TODO: make sure this stuff works...
-            $myPath = set_realpath(APPBASEPATH . '../cdn/pdf');
-            $pdfWithBarcode->save($myPath . '/' . $text . '.pdf');
             $this->load->model('Ticket');
-            $this->Ticket->update(Array('TicketFusionID' => $text), Array('BarcodePDFPath'=>$myPath . '/' . $text . '.pdf'));
+            $this->Ticket->update(Array('TicketFusionID' => $text), Array('BarcodeImagePath'=>$myPath . '/' . $text . '.gif'));
+            $this->DocumentArray['success'] = TRUE;
+            $this->DocumentArray['ImageLocation'] = '/cdn/img/barcodes/' . $text . '.gif';
         } catch ( Exception $e ){
             log_message('error', $e->getMessage());
+            $this->DocumentArray['success'] = TRUE;
         }
+        $this->output->append_output(json_encode($this->DocumentArray));
 	}
 
     function updateSettings(){

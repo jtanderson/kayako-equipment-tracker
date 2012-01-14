@@ -270,7 +270,21 @@ HomeObj.fetchBarcode = function(text){
 		console.log("Error: No container specified.");
 		return;
 	}
+	var newImg = $('<img />');
 	text = text.replace(/[^a-zA-Z0-9- ]/g, '');
-	var newImg = $('<img />').attr('src', '/homeAjax/createBarcode/'+text);
+	$.ajax({
+		url: '/homeAjax/createBarcode',
+		async: false,
+		type: 'POST',
+		data: {'text': text},
+		dataType: 'json',
+		success: function(json){
+			if ( json.success != undefined && json.success ){
+				$(newImg).attr('src', json.ImageLocation);
+			} else {
+				console.log('An error has occurred...');
+			}
+		}
+	});
 	return newImg;
 }
