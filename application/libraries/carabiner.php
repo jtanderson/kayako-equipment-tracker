@@ -603,7 +603,10 @@ class Carabiner {
 			
 			$filename = $lastmodified . md5($filenames).'.js';
 			
-			if( !file_exists($this->cache_path.$filename) )	$this->_combine('js', $files, $filename);
+			if( !file_exists($this->cache_path.$filename) )	{
+                $this->empty_cache('js');
+			    $this->_combine('js', $files, $filename);
+            }
 
 			echo $this->_tag('js', $filename, TRUE);
 
@@ -750,7 +753,10 @@ class Carabiner {
 				
 				$filename = $lastmodified . md5($filenames).'.css';
 		
-				if( !file_exists($this->cache_path.$filename) ) $this->_combine('css', $files, $filename);
+				if( !file_exists($this->cache_path.$filename) ) {
+				    $this->empty_cache('css');
+				    $this->_combine('css', $files, $filename);
+                }
 
 				echo $this->_tag('css',  $filename, TRUE, $media);
 		

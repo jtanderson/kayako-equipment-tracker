@@ -62,7 +62,6 @@
             }
 			$this->load->view('footer');
             log_message('debug', 'Loading view: footer');
-            $this->carabiner->empty_cache('both', 'yesterday'); 
 		}
 	}
  }
