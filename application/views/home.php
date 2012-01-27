@@ -29,11 +29,10 @@
 			<h1>Welcome</h1>
 			<h2>Enter the ticket information.</h2>
 		</div>
-		<div id="client_data">
-			<div class="clear"></div>
-			<hr size="1">
-			<fieldset>
-				<legend>Client details</legend>
+        <fieldset>
+            <legend><span id="legend_client" class="legend current">Client Details</span><span id="legend_equipment" class="legend">Equipment Details</span>
+            </legend>
+			<div id="client_data">
 				<table class="client_data_table">
 					<tr>
 						<td colspan="2">
@@ -158,92 +157,87 @@
 				<div style="text-align: center;">
 					<span class="required">*</span>=&nbsp;required&nbsp;field.
 				</div>
-			</fieldset>
 		</div>
-		<div class="clear"></div>
-		<div id="equipment_data">
-				<div class="clear"></div>
-  				<fieldset style="">
-					<legend>Equipment</legend>
-					<table id="equipment_table">
-						<tr id="Equipment_DEFAULT" class="equipment_row">
-							<td>
-								<div class="equipment_banner">
-									<span class="label expansion expanded unchanged" onclick="HomeObj.toggleEquipmentCollapse(this);">[Equipment Template]</span>
-								</div>
-								<table class='equipment'>
-									<tr>
-										<td class="label">
-											Make<span class="required">*</span>
-										</td>
-										<td class="label">
-											Model<span class="required">*</span>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<input type="text" id="Make" size="35" onkeyup="HomeObj.setEquipmentTitle(this);"/>
-										</td>
-										<td>
-											<input type="text" id="Model" size="35" onkeyup="HomeObj.setEquipmentTitle(this);"/>
-										</td>
-									</tr>
-									<tr>
-										<td class="label">
-											Type
-										</td>
-										<td class="label">
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<input type="text" id="Type" size="35"/>
-										</td>
-										<td>
-										</td>
-									</tr>
-									<tr>
-										<td class="label">
-											Notes
-										</td>
-										<td></td>
-									</tr>
-									<tr>
-										<td colspan="2">
-											<textarea id="Notes"></textarea>
-										</td>
-									</tr>
-									<tr>
-										<td colspan="2">
-											<table class="remove_equipment" onclick="HomeObj.removeEquipment(this);">
-												<tr>
-													<td>
-														<img src="/cdn/img/TrashIcon.png"/>
-													</td>
-													<td>
-														<span>Remove Item</span>
-													</td>
-												</tr>
-											</table>
-										</td>
-									</tr>
-								</table>
-							</td>
-						</tr>
-					</table>
-					<table>
-						<tr class="add_equipment">
-							<td>
-								<a href="javascript:HomeObj.addEquipment();"><img src="/cdn/img/green_plus.png" class="plus_icon" /></a>
-							</td>
-							<td>
-								<a href="javascript:HomeObj.addEquipment();" class="add_item">Add Item</a>
-							</td>
-						</tr>
-					</table>
-					<div class="clear"></div>
-				</fieldset>
+			<div id="equipment_data">
+    		<table id="equipment_table">
+    			<tr id="Equipment_DEFAULT" class="equipment_row">
+    				<td>
+    					<div class="equipment_banner">
+    						<span class="label expansion expanded unchanged" onclick="HomeObj.toggleEquipmentCollapse(this);">[Equipment Template]</span>
+    					</div>
+    					<table class='equipment'>
+    						<tr>
+    							<td class="label">
+    								Make<span class="required">*</span>
+    							</td>
+    							<td class="label">
+    								Model<span class="required">*</span>
+    							</td>
+    						</tr>
+    						<tr>
+    							<td>
+    								<input type="text" id="Make" size="35" onkeyup="HomeObj.setEquipmentTitle(this);"/>
+    							</td>
+    							<td>
+    								<input type="text" id="Model" size="35" onkeyup="HomeObj.setEquipmentTitle(this);"/>
+    							</td>
+    						</tr>
+    						<tr>
+    							<td class="label">
+    								Type
+    							</td>
+    							<td class="label">
+    							</td>
+    						</tr>
+    						<tr>
+    							<td>
+    								<input type="text" id="Type" size="35"/>
+    							</td>
+    							<td>
+    							</td>
+    						</tr>
+    						<tr>
+    							<td class="label">
+    								Notes
+    							</td>
+    							<td></td>
+    						</tr>
+    						<tr>
+    							<td colspan="2">
+    								<textarea id="Notes"></textarea>
+    							</td>
+    						</tr>
+    						<tr>
+    							<td colspan="2">
+    								<table class="remove_equipment" onclick="HomeObj.removeEquipment(this);">
+    									<tr>
+    										<td>
+    											<img src="/cdn/img/TrashIcon.png"/>
+    										</td>
+    										<td>
+    											<span>Remove Item</span>
+    										</td>
+    									</tr>
+    								</table>
+    							</td>
+    						</tr>
+    					</table>
+    				</td>
+    			</tr>
+    		</table>
+    		<table>
+    			<tr class="add_equipment">
+    				<td>
+    					<a href="javascript:HomeObj.addEquipment();"><img src="/cdn/img/green_plus.png" class="plus_icon" /></a>
+    				</td>
+    				<td>
+    					<a href="javascript:HomeObj.addEquipment();" class="add_item">Add Item</a>
+    				</td>
+    			</tr>
+    		</table>
+    		<div class="clear"></div>
 			</div>
+        </fieldset>
 		<div class="clear"></div>
 		<div align="center">
 			<input type="button" id="main_submit" value="Submit" onclick="HomeObj.submitTicketData();"/>
@@ -266,6 +260,7 @@
  		</div>
  	</div>
 	 <script type="text/javascript">
+	    HomeObj.setTabEvents();
 	    HomeObj.setSubmitDialog();
 	 	HomeObj.setDocumentDropdownBlur();
 	 </script>

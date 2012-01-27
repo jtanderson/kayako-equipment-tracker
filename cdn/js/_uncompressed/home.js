@@ -288,3 +288,24 @@ HomeObj.fetchBarcode = function(text){
 	});
 	return newImg;
 }
+
+/**
+ * Function: HomeObj.setTabEvents
+ * 
+ * @author Joseph T. Anderson <jtanderson@ratiocaeli.com>
+ * @since 2012-01-26
+ * @version 2012-01-26
+ */
+
+HomeObj.setTabEvents = function(){
+	$('legend span').each( function(){
+		$(this).click( function(){
+			$('legend span').removeClass('current');
+			$(this).addClass('current');
+			var idSplit = $(this).attr('id').split('_');
+			var type = idSplit[1];
+			$('div[id$=_data]').css('display','none');
+			$('div#'+type+'_data').show();
+		});
+	});
+}

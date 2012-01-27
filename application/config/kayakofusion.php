@@ -21,7 +21,7 @@
 |
 */
 
- $config['KayakoAPIKey'] = 'f792aad9-f6b6-3bb4-5d03-859b8cd0cbb7';
+ $config['KayakoAPIKey'] = 'eb96e6d0-a71d-e244-21c6-96f9de584551';
  
   /*
 |--------------------------------------------------------------------------
@@ -33,7 +33,7 @@
 |
 */
  
- $config['SwiftURL'] = 'http://ratiocaeli.kayako.com';
+ $config['SwiftURL'] = 'http://svcdev.kayako.com';
  
 /*
 |--------------------------------------------------------------------------
@@ -45,7 +45,7 @@
 |
 */
  
- $config['KayakoSecretKey'] = 'ODNiMDM0NWYtZWIwYy00ZWQ0LTA5YTMtZDY2ODNlMTBlYjU1YTA4NjczZjMtNmJiZC0yNGQ0LWVkZTgtNDk4NmE0YjRmNGI1';
+ $config['KayakoSecretKey'] = 'OThlMTYxMzctZjA3Yi02YjY0LTFkNjAtOWJhZDM5NDZmM2Y4OGQ3NTQxZTYtZWE2YS05ZjA0LTYxZWEtODVlYmM2YzY3YTA3';
  
 /*
  * End of kayako.php

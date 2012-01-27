@@ -115,14 +115,14 @@ SettingsObj.saveSettings = function(){
 }
 
 SettingsObj.setTabEvents = function(){
-		$('legend span').each( function(){
-			$(this).click( function(){
-				$('legend span').removeClass('current');
-				$(this).addClass('current');
-				var idSplit = $(this).attr('id').split('_');
-				var type = idSplit[1];
-				$('table[id^=prefs_]').css('display','none');
-				$('table#prefs_'+type).show();
-			});
+	$('legend span').each( function(){
+		$(this).click( function(){
+			$('legend span').removeClass('current');
+			$(this).addClass('current');
+			var idSplit = $(this).attr('id').split('_');
+			var type = idSplit[1];
+			$('table[id^=prefs_]').css('display','none');
+			$('table#prefs_'+type).show();
 		});
+	});
 }
