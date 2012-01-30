@@ -24,7 +24,6 @@
 	 	 <?php } ?>
 	</div>
 	<div id="container">
-<!-- 		<input type="button" value="Kayako Test" onclick="$.post('/homeAjax/test')"/> -->
 		<div id="top">
 			<h1>Welcome</h1>
 			<h2>Enter the ticket information.</h2>
