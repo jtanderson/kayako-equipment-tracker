@@ -21,12 +21,12 @@
 			</a>
 		</li>
 		<li>
-            <a href="/Home/Search">
+            <a href="/home/search">
                 <span class="cpspan bordered">Search</span>
             </a>
         </li>
         <li>
-            <a href="/Home/Settings/<?php echo $this->session->userdata('LocalID'); ?>">
+            <a href="/home/settings/<?php echo $this->session->userdata('LocalID'); ?>">
                 <span class="cpspan">Settings</span>
             </a>
         </li>

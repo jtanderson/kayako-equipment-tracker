@@ -157,7 +157,7 @@
 					<span class="required">*</span>=&nbsp;required&nbsp;field.
 				</div>
 		</div>
-			<div id="equipment_data">
+		<div id="equipment_data">
     		<table id="equipment_table">
     			<tr id="Equipment_DEFAULT" class="equipment_row">
     				<td>
@@ -234,8 +234,8 @@
     				</td>
     			</tr>
     		</table>
-    		<div class="clear"></div>
-			</div>
+    	    <div class="clear"></div>
+	    </div>
         </fieldset>
 		<div class="clear"></div>
 		<div align="center">

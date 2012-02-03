@@ -944,8 +944,9 @@ class Carabiner {
 			$contents = $this->CI->curl->simple_get($ref);
 			
 		else:
-
-			$contents = file_get_contents( $ref );
+            if ( file_exists($ref) ){
+			    $contents = file_get_contents( $ref );
+            }
 			
 		endif;
 		

@@ -3,27 +3,6 @@
 	text-shadow:none;
 }
 
-legend{
-	padding: 0px;
-}
-
-legend span{
-	display: inline-block;
-	border: inherit;
-	padding: 12px 10px;
-	cursor: pointer;
-}
-
-legend span.current{
-	color: #d3d3d3;
-	background-color: #222;
-}
-
-legend span:hover{
-	color: #d3d3d3;
-	background-color: #222;
-}
-
 .pref_title{
 	background-color: #666;
 	border-top: 2px solid #333;
