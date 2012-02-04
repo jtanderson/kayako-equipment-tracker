@@ -3,7 +3,7 @@
 cookie.txt
 application/logs/*.php
 cookie.txt
-#application/cache/*
-#cdn/cache/*.js
-#cdn/cache/*.css
-#cdn/img/barcodes/*.gif
+application/cache/*
+cdn/cache/*.js
+cdn/cache/*.css
+cdn/img/barcodes/*.gif
