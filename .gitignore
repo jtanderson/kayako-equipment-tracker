@@ -4,6 +4,6 @@ cookie.txt
 application/logs/*.php
 cookie.txt
 cookie.txt
-application/cache
-cdn/cache
-cdn/img/barcodes
+application/cache/*
+cdn/cache/*
+cdn/img/barcodes/*
