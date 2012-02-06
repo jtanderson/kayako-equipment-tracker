@@ -10,7 +10,7 @@
 ?>
 <div class="login_box">
 	<h2>Saint Vincent Service Desk Extension</h2>
-	<img class="big_logo" src="/cdn/img/shield.gif"/>
+	<img class="big_logo" src="<?php echo base_url("/cdn/img/shield.gif"); ?>"/>
 	<div id="browser_warning">
 		<span class="warn_head">Warning:</span>
 		<div class="warn_body">This site is best viewed on a Webkit based broswer. Get one <a href="http://chrome.google.com/">here<a>.</div>
@@ -56,7 +56,7 @@
 		<tr>
 			<td colspan='2'>
 				<div id="bad_login">
-					<img height="15px" width="15px" src="/cdn/img/Red_triangle_alert_icon.png">&nbsp;Login Failed
+					<img height="15px" width="15px" src="<?php echo base_url("/cdn/img/Red_triangle_alert_icon.png"); ?>">&nbsp;Login Failed
 				</div>
 			</td>
 		</tr>

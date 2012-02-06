@@ -71,16 +71,23 @@ class Kayako
 		if ( $result != FALSE ){
 			$result = explode("\r\n\r\n", $result, 2);
 			$response = strip_cdata(html_entity_decode($result[1]));
-			$XMLResponse = new SimpleXMLElement($response);
-			$ReturnArray = Array(
-				'status' => (String) $XMLResponse->status,
-				'error' => (String) $XMLResponse->error,
-				'sessionid' => (String) $XMLResponse->sessionid,
-				'sessiontimeout' => (String) $XMLResponse->sessiontimeout,
-				'staffid' => (String) $XMLResponse->staffid
-			);
+            try{
+                libxml_use_internal_errors(TRUE);
+    			$XMLResponse = new SimpleXMLElement($response);
+    			$ReturnArray = Array(
+    				'status' => (String) $XMLResponse->status,
+    				'error' => (String) $XMLResponse->error,
+    				'sessionid' => (String) $XMLResponse->sessionid,
+    				'sessiontimeout' => (String) $XMLResponse->sessiontimeout,
+    				'staffid' => (String) $XMLResponse->staffid
+    			);
 			return $ReturnArray;
-		} else {
+            } catch (Exception $e){
+                libxml_use_internal_errors(FALSE);
+                log_message('debug', $e->getMessage);
+                return FALSE;
+            }
+ 		} else {
 			return FALSE;
 		}
 	}
@@ -120,11 +127,11 @@ class Kayako
 		$Priority = kyTicketPriority::get($Data['Priority']);
 		$Creator = kyStaff::get($Data['Creator']);
 		$Department = kyDepartment::get($Data['Department']);
-		
+        
 		$ticket = kyTicket::createNew($Department, $Creator, $Data['Contents'], $Data['Subject'])
 			->setPriority($Priority)
 			->create();
-		return $ticket->getDisplayID();
+		return $ticket;
 	}
 	
 	/**
@@ -157,6 +164,31 @@ class Kayako
     
     public function testConnection(){
         
+    }
+    
+    /**
+     * This function will add a local barcode image to a ticket as an attachment.
+     * 
+     * @author Joseph T. Anderson <joe.anderson@email.stvincent.edu>
+     * @since 2012-02-05
+     * @version 2012-02-05
+     * 
+     */
+    public function addTicketBarcode($TicketID = "", $BarcodePath = ""){
+        if ( $TicketID == "" || $BarcodePath == "" ){
+            throw new Exception("Invalid DisplayID or Barcode path.");
+        }
+        
+        $ticket = kyTicket::get($TicketID);
+        $user = kyStaff::get($ticket->getCreatorType());
+        $post = $ticket
+            ->newPost($user, "The barcode for this ticket is attached.")
+            ->create();
+        $contents = file_get_contents($BarcodePath);
+        $name = "barcode.gif";
+        $attachment = kyTicketAttachment::createNew($post, $contents, $name);
+        $attachment->create();
+        return TRUE;
     }
 }
 

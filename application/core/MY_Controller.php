@@ -21,7 +21,7 @@
 			$DocumentArray = array();
 
             $carabiner_config = array(
-                'script_dir' => 'cdn/', 
+                'script_dir' => 'cdn/',
                 'style_dir'  => 'cdn/',
                 'cache_dir'  => 'cdn/cache/',
                 'combine'    => TRUE,
@@ -33,7 +33,7 @@
             $this->carabiner->css('css/mydropdown.css');
             $this->carabiner->css('js/jquery/jquery-ui/css/dot-luv/jquery-ui-1.8.13.custom.css');
             
-            $this->carabiner->js('js/jquery/jquery-1.6.1.min.js');
+            $this->carabiner->js('js/jquery/jquery-1.7.1.min.js');
             $this->carabiner->js('js/jquery/jquery-ui/js/jquery-ui-1.8.13.custom.min.js');
             $this->carabiner->js('js/jquery/jquery.scrollTo-min.js');
             $this->carabiner->js('js/jquery/jquery.mydropdown.min.js');
@@ -41,6 +41,7 @@
             $this->carabiner->js('js/jquery/jquery.client.min.js');
             $this->carabiner->js('js/jquery/jquery.blockUI.min.js');
             $this->carabiner->js('js/' . ( ENVIRONMENT == 'development' ? '_uncompressed/' : '' ) . 'main.js');
+            
             
             if ( $this->session->userdata('logged_in') ){
                 $this->carabiner->css('css/cpanel.css');

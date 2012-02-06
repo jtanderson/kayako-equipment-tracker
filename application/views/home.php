@@ -11,10 +11,10 @@
  <div class="main-panel">
 	<div id="message_container">
 		<div id="DEFAULT_warning" style="display:none;" class="message">
-			<a href="#" onclick="MainObj.removeWarning(this);" class="remove_warning"><img style="height: 15px; width: 15px;" src="/cdn/img/moblin-close.png"/></a>
+			<a href="#" onclick="MainObj.removeWarning(this);" class="remove_warning"><img style="height: 15px; width: 15px;" src="<?php echo base_url("/cdn/img/moblin-close.png"); ?>"/></a>
 	 		<table>
 	 			<tr>
-	 				<td><img src="/cdn/img/Red_triangle_alert_icon.png" class="error_img"/></td>
+	 				<td><img src="<?php echo base_url("/cdn/img/Red_triangle_alert_icon.png"); ?>" class="error_img"/></td>
 	 				<td><span class="warning_text"></span></td>
 	 			</tr>
 	 		</table>
@@ -211,7 +211,7 @@
     								<table class="remove_equipment" onclick="HomeObj.removeEquipment(this);">
     									<tr>
     										<td>
-    											<img src="/cdn/img/TrashIcon.png"/>
+    											<img src="<?php echo base_url("/cdn/img/TrashIcon.png"); ?>"/>
     										</td>
     										<td>
     											<span>Remove Item</span>
@@ -227,7 +227,7 @@
     		<table>
     			<tr class="add_equipment">
     				<td>
-    					<a href="javascript:HomeObj.addEquipment();"><img src="/cdn/img/green_plus.png" class="plus_icon" /></a>
+    					<a href="javascript:HomeObj.addEquipment();"><img src="<?php echo base_url("/cdn/img/green_plus.png"); ?>" class="plus_icon" /></a>
     				</td>
     				<td>
     					<a href="javascript:HomeObj.addEquipment();" class="add_item">Add Item</a>
@@ -251,8 +251,7 @@
  	<div id="submit_dialog" style="display: none;">
  		<div class="waiting">
 	 		<div id="waiting_message" class="waiting_message">Please Wait. Processing Request...</div><br/>
-	 		<!-- <div id="progressbar"></div> -->
-	 		<progress id="pBar" max="100" value="1"></progress><br/>
+	 		<div style="text-align: center;"><img src="<?php echo base_url("/cdn/img/load.gif"); ?>" alt="Waiting" title="Waiting"></div>
  		</div>
  		<div class="finished">
  			

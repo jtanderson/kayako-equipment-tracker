@@ -16,17 +16,17 @@
 			</a> -->
 		</li>
 		<li>
-			<a href="/">
+			<a href="<?php echo base_url('/'); ?>">
 				<span class="cpspan bordered">Home</span>
 			</a>
 		</li>
 		<li>
-            <a href="/home/search">
+            <a href="<?php echo base_url('/home/search'); ?>">
                 <span class="cpspan bordered">Search</span>
             </a>
         </li>
         <li>
-            <a href="/home/settings/<?php echo $this->session->userdata('LocalID'); ?>">
+            <a href="<?php echo base_url('/home/settings/'.$this->session->userdata('LocalID')); ?>">
                 <span class="cpspan">Settings</span>
             </a>
         </li>

@@ -50,6 +50,9 @@
             $this->load->model('Department');
             $this->DocumentArray['Departments'] = $this->Department->find_all();
             $this->DocumentArray['Priorities'] = $this->Priority->find_all();
+            if ( ! $this->session->userdata('kayako_connected') ){
+                $this->DocumentArray['Errors'] []= "The system is not connected to the Kayako Fusion Server.  To try and reconnect, log out and log back in.";
+            }
             $this->views['home'] = $this->DocumentArray;
 			// $this->load->view('home', $this->DocumentArray);
 		}

@@ -90,14 +90,12 @@ HomeObj.submitTicketData = function(){
 	$.post('/homeAjax/submitTicketData', postData, function(json){
 		if ( json != undefined && json['success'] == true ){
 			$('#waiting_message').html('Sending to Kayako Fusion...');
-			$('#pBar').attr('value', 50);
 			
 			// @TODO: Should the request to Kayako be made first and then write the ticket to the local DB?
 			// Post a request to create the KF ticket
 			$.post('homeAjax/syncTicketWithFusion',{
 				'PK_TicketNum': json.TicketID
 			}, function(json2){
-				$('#pBar').attr('value', 100);
 				if ( json2.success ){
 					// Happens when the sync is successful
 					$('div.waiting').hide();

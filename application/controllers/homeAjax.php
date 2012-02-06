@@ -61,6 +61,7 @@
 			$sess_data = Array(
 				'username' => $username,
 				'logged_in' => TRUE,
+                'kayako_connected' => TRUE,
 				'KayakoSessionID' => $KayakoLogin['sessionid'],
 				'StaffID' => $KayakoLogin['staffid'],
 				'LocalID' => $id
@@ -85,9 +86,21 @@
                 }
                 $this->Department->refreshTable($newValues);
             } catch ( Exception $e ){
-                $this->DocumentArray['Errors'] []= "The system could not connect to the Kayako Fusion Server. Try <a href=\"javascript:location.reload();\">refreshing</a>.";
+                //$this->DocumentArray['Errors'] []= "The system could not connect to the Kayako Fusion Server. Try <a href=\"javascript:location.reload();\">refreshing</a>.";
                 log_message('error', "Kayako Error: " . $e->getMessage());
             }
+		} else if ( $this->User->authenticate($username, $password) ){
+		    $id = $this->User->getUserPKFromUName($username);
+            $this->DocumentArray['success'] = TRUE;
+            $sess_data = Array(
+                'username' => $username,
+                'logged_in' => TRUE,
+                'kayako_connected' => FALSE,
+                'KayakoSessionID' => NULL,
+                'StaffID' => NULL,
+                'LocalID' => $id
+            );
+            $this->session->set_userdata($sess_data);
 		} else {
 			$this->DocumentArray['success'] = FALSE;
 			$this->DocumentArray['message'] = "Authentication Failed";
@@ -269,11 +282,11 @@
             
 			try {
                 $this->load->library('Kayako');
-                $FusionID = $this->kayako->createTicket($TicketConfig);
+                $ticket = $this->kayako->createTicket($TicketConfig);
                 
-                $this->Ticket->update(Array('PK_TicketNum'=> $LocalTicketID), Array('TicketFusionID'=>$FusionID));
+                $this->Ticket->update(Array('PK_TicketNum'=> $LocalTicketID), Array('TicketDisplayID'=>$ticket->getDisplayID(), 'TicketFusionID' => $ticket->getID()));
                 
-				$this->DocumentArray['TicketID'] = $FusionID;
+				$this->DocumentArray['TicketID'] = $ticket->getDisplayID();
 				$this->DocumentArray['success'] = TRUE;
 			} catch ( Exception $e ){
 				$this->DocumentArray['success'] = FALSE;
@@ -347,9 +360,14 @@
             imagegif($img, $myPath . $text . '.gif');
             
             $this->load->model('Ticket');
-            $this->Ticket->update(Array('TicketFusionID' => $text), Array('BarcodeImagePath'=>$myPath . '/' . $text . '.gif'));
+            $this->Ticket->update(Array('TicketDisplayID' => $text), Array('BarcodeImagePath'=>$myPath . '/' . $text . '.gif'));
+            $ticket = $this->Ticket->find(Array('TicketDisplayID' => $text));
+            
+            $this->load->library('Kayako');
+            $this->kayako->addTicketBarcode($ticket['TicketFusionID'], base_url('/cdn/img/barcodes/' . $text . '.gif'));
+            
             $this->DocumentArray['success'] = TRUE;
-            $this->DocumentArray['ImageLocation'] = '/cdn/img/barcodes/' . $text . '.gif';
+            $this->DocumentArray['ImageLocation'] = base_url('/cdn/img/barcodes/' . $text . '.gif');
         } catch ( Exception $e ){
             log_message('error', $e->getMessage());
             $this->DocumentArray['success'] = TRUE;

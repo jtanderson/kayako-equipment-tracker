@@ -13,17 +13,17 @@
 <div class="main-panel">
     <div id="message_container">
         <div id="DEFAULT_warning" style="display:none;" class="message">
-            <a href="#" onclick="MainObj.removeWarning(this);" class="remove_warning"><img style="height: 15px; width: 15px;" src="/cdn/img/moblin-close.png"/></a>
+            <a href="#" onclick="MainObj.removeWarning(this);" class="remove_warning"><img style="height: 15px; width: 15px;" src="<?php echo base_url('/cdn/img/moblin-close.png'); ?>"/></a>
             <table>
                 <tr>
-                    <td><img src="/cdn/img/Red_triangle_alert_icon.png" class="error_img"/></td>
+                    <td><img src="<?php echo base_url('/cdn/img/Red_triangle_alert_icon.png'); ?>" class="error_img"/></td>
                     <td><span class="warning_text"></span></td>
                 </tr>
             </table>
         </div>
         <?php foreach ( $Errors as $error ){ ?>
             <script type="text/javascript">MainObj.displayWarning("<?php echo mysql_escape_string($error); ?>");</script>
-         <?php } ?>
+        <?php } ?>
     </div>
     <div id="container">
         <div>
@@ -34,6 +34,9 @@
         <div class="search_container">
             <input id="ticket_search" class="big-search default-search-text" type="text" value="Ticket ID"/>
             <input id="ticket_search_submit" type="button" value="Go"/>
+            <script type="text/javascript">
+                $('#ticket_search_submit').button();
+            </script>
         </div>
     </div>
     <script type="text/javascript">SearchObj.setSearchBarCSS();</script>
