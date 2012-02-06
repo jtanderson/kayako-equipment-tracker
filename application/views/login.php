@@ -9,7 +9,7 @@
  */
 ?>
 <div class="login_box">
-	<h2>Saint Vincent Service Desk Extension</h2>
+	<h2>Kayako Client Equipment Tracking</h2>
 	<img class="big_logo" src="<?php echo base_url("/cdn/img/shield.gif"); ?>"/>
 	<div id="browser_warning">
 		<span class="warn_head">Warning:</span>
