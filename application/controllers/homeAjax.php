@@ -102,6 +102,7 @@
                 'LocalID' => $id
             );
             $this->session->set_userdata($sess_data);
+            $this->session->sess_write(TRUE);
 		} else {
 			$this->DocumentArray['success'] = FALSE;
 			$this->DocumentArray['message'] = "Authentication Failed";
