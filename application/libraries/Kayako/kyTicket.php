@@ -817,6 +817,20 @@ class kyTicket extends kyObjectBase {
 	public function getResolutionDue() {
 		return $this->resolution_due;
 	}
+    
+    public function setResolutionDue($str){
+        $date = strtotime($str);
+        if ( !is_numeric($date) ){
+            return FALSE; 
+        }
+        
+        if ( checkdate(date('m', $date), date('d', $date), date('Y', $date)) ){
+            $this->resolution_due = intval(date(self::$datetime_format, $date));
+            return $this;
+        } else{
+            return FALSE;
+        }
+    }
 
 	/**
 	 *

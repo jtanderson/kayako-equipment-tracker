@@ -67,6 +67,7 @@
 				'LocalID' => $id
 			);
 			$this->session->set_userdata($sess_data);
+            $this->session->sess_write(TRUE);
             
             $this->load->library('Kayako');
             try{
@@ -250,6 +251,7 @@
 			$StaffID = $TicketData['Staff'];
 			$DepartmentID = $TicketData['DepartmentFusionID'];
 			$PriorityID = $TicketData['PriorityFusionID'];
+            $ResolutionDue = $TicketData['Deadline'];
 			
 			$ContentFormat = "Ticket for user: %s %s ".PHP_EOL.
 			"Phone Number: %s".PHP_EOL.
@@ -277,8 +279,11 @@
 				'Priority' => $PriorityID,
 				'Department' => $DepartmentID,
 				'Contents' => $Contents,
-				'Subject' => $Subject
+				'Subject' => $Subject,
+				'ResolutionDue' => $ResolutionDue
 			);
+            
+            log_message('debug', 'DUE DATE: ' . $ResolutionDue);
             
 			try {
                 $this->load->library('Kayako');

@@ -130,6 +130,7 @@ class Kayako
         
 		$ticket = kyTicket::createNew($Department, $Creator, $Data['Contents'], $Data['Subject'])
 			->setPriority($Priority)
+            ->setResolutionDue($Data['ResolutionDue'])
 			->create();
 		return $ticket;
 	}

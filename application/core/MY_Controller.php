@@ -78,6 +78,7 @@
             }
 			$this->load->view('footer');
             log_message('debug', 'Loading view: footer');
+            // sess_write(TRUE);
 		}
 	}
  }
