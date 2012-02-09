@@ -3,16 +3,18 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Feb 08, 2012 at 07:18 AM
+-- Generation Time: Feb 08, 2012 at 12:51 PM
 -- Server version: 5.5.19
 -- PHP Version: 5.3.8
 
+SET FOREIGN_KEY_CHECKS=0;
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 --
 -- Database: `db_kayako`
 --
+DROP DATABASE `db_kayako`;
 CREATE DATABASE `db_kayako` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `db_kayako`;
 
@@ -23,7 +25,7 @@ USE `db_kayako`;
 --
 
 DROP TABLE IF EXISTS `TB_Department`;
-CREATE TABLE `TB_Department` (
+CREATE TABLE IF NOT EXISTS `TB_Department` (
   `PK_DepartmentNum` bigint(20) NOT NULL AUTO_INCREMENT,
   `U_DepartmentTitle` varchar(255) DEFAULT NULL,
   `DepartmentFusionID` bigint(20) NOT NULL,
@@ -38,7 +40,7 @@ CREATE TABLE `TB_Department` (
 --
 
 DROP TABLE IF EXISTS `TB_Equipment`;
-CREATE TABLE `TB_Equipment` (
+CREATE TABLE IF NOT EXISTS `TB_Equipment` (
   `PK_EquipmentNum` bigint(20) NOT NULL AUTO_INCREMENT,
   `FK_TicketNum` bigint(20) NOT NULL,
   `Type` varchar(45) DEFAULT NULL,
@@ -56,7 +58,7 @@ CREATE TABLE `TB_Equipment` (
 --
 
 DROP TABLE IF EXISTS `TB_Priority`;
-CREATE TABLE `TB_Priority` (
+CREATE TABLE IF NOT EXISTS `TB_Priority` (
   `PK_PriorityNum` bigint(20) NOT NULL AUTO_INCREMENT,
   `U_PriorityTitle` varchar(255) DEFAULT NULL,
   `PriorityFusionID` bigint(20) NOT NULL,
@@ -71,7 +73,7 @@ CREATE TABLE `TB_Priority` (
 --
 
 DROP TABLE IF EXISTS `TB_Setting`;
-CREATE TABLE `TB_Setting` (
+CREATE TABLE IF NOT EXISTS `TB_Setting` (
   `PK_SettingNum` bigint(20) NOT NULL AUTO_INCREMENT,
   `U_Title` varchar(255) DEFAULT NULL,
   `Default` varchar(255) DEFAULT NULL,
@@ -86,7 +88,7 @@ CREATE TABLE `TB_Setting` (
 --
 
 DROP TABLE IF EXISTS `TB_Ticket`;
-CREATE TABLE `TB_Ticket` (
+CREATE TABLE IF NOT EXISTS `TB_Ticket` (
   `PK_TicketNum` bigint(20) NOT NULL AUTO_INCREMENT,
   `FK_PriorityNum` bigint(20) NOT NULL,
   `FK_DepartmentNum` bigint(20) NOT NULL,
@@ -106,7 +108,7 @@ CREATE TABLE `TB_Ticket` (
   KEY `fk_TB_Ticket_TB_Priority1` (`FK_PriorityNum`),
   KEY `fk_TB_Ticket_TB_Department1` (`FK_DepartmentNum`),
   KEY `TicketDisplayID` (`TicketDisplayID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=82 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=95 ;
 
 -- --------------------------------------------------------
 
@@ -115,7 +117,7 @@ CREATE TABLE `TB_Ticket` (
 --
 
 DROP TABLE IF EXISTS `TB_TicketUser`;
-CREATE TABLE `TB_TicketUser` (
+CREATE TABLE IF NOT EXISTS `TB_TicketUser` (
   `PKa_TicketNum` bigint(20) NOT NULL,
   `PKb_UserNum` bigint(20) NOT NULL,
   PRIMARY KEY (`PKa_TicketNum`,`PKb_UserNum`),
@@ -130,7 +132,7 @@ CREATE TABLE `TB_TicketUser` (
 --
 
 DROP TABLE IF EXISTS `TB_User`;
-CREATE TABLE `TB_User` (
+CREATE TABLE IF NOT EXISTS `TB_User` (
   `PK_UserNum` bigint(20) NOT NULL AUTO_INCREMENT,
   `First` varchar(45) NOT NULL DEFAULT '',
   `Last` varchar(45) NOT NULL DEFAULT '',
@@ -148,7 +150,7 @@ CREATE TABLE `TB_User` (
 --
 
 DROP TABLE IF EXISTS `TB_UserSetting`;
-CREATE TABLE `TB_UserSetting` (
+CREATE TABLE IF NOT EXISTS `TB_UserSetting` (
   `PKa_UserNum` bigint(20) NOT NULL,
   `PKb_SettingNum` bigint(20) NOT NULL,
   `Value` varchar(255) DEFAULT NULL,
@@ -164,7 +166,7 @@ CREATE TABLE `TB_UserSetting` (
 --
 
 DROP TABLE IF EXISTS `ci_sessions`;
-CREATE TABLE `ci_sessions` (
+CREATE TABLE IF NOT EXISTS `ci_sessions` (
   `session_id` varchar(40) NOT NULL DEFAULT '0',
   `previous_id` varchar(40) NOT NULL DEFAULT '0',
   `ip_address` varchar(16) NOT NULL DEFAULT '0',
@@ -205,3 +207,4 @@ ALTER TABLE `TB_TicketUser`
 ALTER TABLE `TB_UserSetting`
   ADD CONSTRAINT `fk_TB_User_has_TB_Setting_TB_Setting1` FOREIGN KEY (`PKb_SettingNum`) REFERENCES `TB_Setting` (`PK_SettingNum`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_TB_User_has_TB_Setting_TB_User1` FOREIGN KEY (`PKa_UserNum`) REFERENCES `TB_User` (`PK_UserNum`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+SET FOREIGN_KEY_CHECKS=1;

@@ -87,7 +87,7 @@
 					</tr>
 					<tr>
 						<td>
-							<span class="label">Deadline<span class="required">*</span></span>
+							<span class="label">Deadline<!-- <span class="required">*</span> --></span>
 						</td>
 						<td class="client_right">
 						</td>

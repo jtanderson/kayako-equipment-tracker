@@ -182,7 +182,7 @@
 		$this->form_validation->set_rules('Email', 'Email', 'trim|required|valid_email');
 		$this->form_validation->set_rules('Subject', 'Subject', 'trim|required');
 		$this->form_validation->set_rules('Priority', 'Priority', 'trim|required');
-		$this->form_validation->set_rules('Deadline', 'Deadline', 'trim|required');
+		// $this->form_validation->set_rules('Deadline', 'Deadline', 'trim|required');
 		$this->form_validation->set_rules('Department', 'Department', 'trim|required');
 		
 		if ( $this->form_validation->run() ){
@@ -192,6 +192,7 @@
 			$InsertArray['Staff'] = $this->session->userdata('StaffID');
             $InsertArray['FK_DepartmentNum'] = $this->Department->getPKFromFusionID($InsertArray['Department']);
             $InsertArray['FK_PriorityNum'] = $this->Priority->getPKFromFusionID($InsertArray['Priority']);
+            $InsertArray['Deadline'] = strtotime($InsertArray['Deadline']) > 0 ? $InsertArray['Deadline'] : NULL;
 			
 			$this->load->model('Ticket');
 			if ( $TicketID = $this->Ticket->createTicket($InsertArray) ){
@@ -255,6 +256,7 @@
             $ResolutionDue = $TicketData['Deadline'];
 			
 			$ContentFormat = "Ticket for user: %s %s ".PHP_EOL.
+			(strtotime($ResolutionDue) > 0 ? "Due On: ". date('F d, Y', strtotime($ResolutionDue)) .PHP_EOL : "").
 			"Phone Number: %s".PHP_EOL.
 			"Email: %s".PHP_EOL.PHP_EOL.
 			"Problem:".PHP_EOL.

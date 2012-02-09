@@ -41,7 +41,7 @@ class Kayako
 		require_once 'Kayako/kyIncludes.php';
 		log_message('debug', "Kayako API Loaded");
 		try{
-			kyBase::init($this->SwiftURL . '/api/', $this->APIKey, $this->SecretKey);
+			kyBase::init($this->SwiftURL . '/api/', $this->APIKey, $this->SecretKey, FALSE, 'Y-m-d H:i:s');
 		} catch ( Exception $e ){
 			// Should do something...
 		}

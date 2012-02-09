@@ -11,7 +11,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Saint Vincent HelpDesk Extension</title>
+		<title>Kayako Equipment Tracker</title>
 		<?php $this->carabiner->display('css'); $this->carabiner->display('js'); ?>
 	</head>
 	<!-- Begin Body -->

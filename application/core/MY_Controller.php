@@ -42,10 +42,8 @@
             $this->carabiner->js('js/jquery/jquery.blockUI.min.js');
             $this->carabiner->js('js/' . ( ENVIRONMENT == 'development' ? '_uncompressed/' : '' ) . 'main.js');
             
-            
             if ( $this->session->userdata('logged_in') ){
                 $this->carabiner->css('css/cpanel.css');
-                // $this->carabiner->css('css/settings.css');
                 if ( $this->uri->segment(2) ){
                     $this->carabiner->css('css/'.$this->uri->segment(2).'.css');
                     $this->carabiner->js('js/' . ( ENVIRONMENT == 'development' ? '_uncompressed/' : '' ) . $this->uri->segment(2).'.js');

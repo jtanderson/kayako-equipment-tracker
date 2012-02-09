@@ -67,8 +67,6 @@ HomeObj.setDocumentDropdownBlur = function(){
 HomeObj.submitTicketData = function(){
 	MainObj.clearWarnings();
 	var dialog = $('#submit_dialog').dialog('open');
-	var progressbar = dialog.find('#progressbar').progressbar();
-	// fillBar(dialog.find('#progressbar'));
 	var postData = {};
 	var inputs = $('#client_data input[type!=button], #client_data textarea').not('#display_deadline');
 	inputs.each(function(){
@@ -77,7 +75,9 @@ HomeObj.submitTicketData = function(){
 	postData['Priority'] = $('#Priority :selected').val();
 	postData['Department'] = $('#Department :selected').val();
 	
-	// console.log(postData);
+	if ( $('#display_deadline').val() == "" ){
+		postData['Deadline'] = "";
+	}
 	
 	var equipmentArray = $('#equipment_table [id*=Equipment_]').not('#Equipment_DEFAULT');
 	equipmentArray.each( function(){
