@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'https://kayako.ratiocaeli.com/';
+$config['base_url']	= $_SERVER['HTTPS'] ? "https://{$_SERVER['HTTP_HOST']}/" : "http://{$_SERVER['HTTP_HOST']}/";
 
 /*
 |--------------------------------------------------------------------------
