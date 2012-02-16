@@ -44,10 +44,6 @@
             
             if ( $this->session->userdata('logged_in') ){
                 $this->carabiner->css('css/cpanel.css');
-                if ( $this->uri->segment(2) ){
-                    $this->carabiner->css('css/'.$this->uri->segment(2).'.css');
-                    $this->carabiner->js('js/' . ( ENVIRONMENT == 'development' ? '_uncompressed/' : '' ) . $this->uri->segment(2).'.js');
-                }
             } else {
                 $this->carabiner->css('css/login.css');
             }

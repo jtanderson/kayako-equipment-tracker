@@ -21,7 +21,7 @@
 			</a>
 		</li>
 		<li>
-            <a href="<?php echo base_url('/home/search'); ?>">
+            <a href="<?php echo base_url('/search'); ?>">
                 <span class="cpspan bordered">Search</span>
             </a>
         </li>

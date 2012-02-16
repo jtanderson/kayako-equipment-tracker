@@ -17,6 +17,24 @@ fieldset {
 	-webkit-border-radius: 3px;
 }
 
+.barcode{
+	display: inline-block;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	padding: 5px;
+	background-color: #fff;
+}
+
+.center{
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+.divide{
+	border-top: 1px solid black;
+	margin: 15px 0px 15px 0px;
+}
 
 hr{
 	border-color: #333;

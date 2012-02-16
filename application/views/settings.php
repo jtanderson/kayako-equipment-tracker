@@ -33,23 +33,23 @@
             <table id="prefs_user" class="pref_table">
                 <tr>
                     <td class="pref_title"><span>First Name</span></td>
-                    <td class="pref_value hybrid"><span id="First"><?php echo $UserData['First'];?></span></td>
+                    <td class="pref_value hybrid"><span id="First"><?php echo isset($UserData['First']) ? $UserData['First'] : "";?></span></td>
                     <td class="pref_title"><span>Last Name</span></td>
-                    <td class="pref_value hybrid"><span id="Last"><?php echo $UserData['Last'];?></span></td>
+                    <td class="pref_value hybrid"><span id="Last"><?php echo isset($UserData['Last']) ? $UserData['Last'] : ""; ?></span></td>
                 </tr>
                 <tr>
                     <td class="pref_title"><span>Username</span></td>
-                    <td class="pref_value hybrid"><span id="U_Username"><?php echo $UserData['U_Username'];?></span></td>
+                    <td class="pref_value hybrid"><span id="U_Username"><?php echo isset($UserData['U_Username']) ? $UserData['U_Username'] : "";?></span></td>
                     <td class="pref_title"><span>Email</span></td>
-                    <td class="pref_value hybrid"><span id="Email"><?php echo $UserData['Email'];?></span></td>
+                    <td class="pref_value hybrid"><span id="Email"><?php echo isset($UserData['Email']) ? $UserData['Email'] : "";?></span></td>
                 </tr>
             </table>
             <table id="prefs_system" class="pref_table" style="display: none;">
                 <tr>
                     <td class="pref_title"><span>Default Ticket Priority</span></td>
-                    <td class="pref_value hybrid"><span id="DefaultTicketPriority"><?php echo $Settings['DefaultTicketPriority'];?></span></td>
+                    <td class="pref_value hybrid"><span id="DefaultTicketPriority"><?php echo isset($Settings['DefaultTicketPriority']) ? $Settings['DefaultTicketPriority'] : "";?></span></td>
                     <td class="pref_title"><span>Default Ticket Department</span></td>
-                    <td class="pref_value hybrid"><span id="DefaultTicketDepartment"><?php echo $Settings['DefaultTicketDepartment'];?></span></td>
+                    <td class="pref_value hybrid"><span id="DefaultTicketDepartment"><?php echo isset($Settings['DefaultTicketDepartment']) ? $Settings['DefaultTicketDepartment'] : "";?></span></td>
                 </tr>
                 <tr>
                     <td class="pref_title"><span>Color Theme</span></td>

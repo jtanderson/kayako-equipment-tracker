@@ -46,7 +46,12 @@ LoginObj.submitLogin = function(){
 			if ( $('#bad_login').is(':visible') ){
 				$('#bad_login').toggle();
 			}
-			location.reload();
+			var url = $("#destination_url").val();
+			if ( url == "" ){
+				location.reload();
+			} else {
+				location.href = url;
+			}
 		} else {
 			$.unblockUI();
 			$('#bad_login').slideDown(500);

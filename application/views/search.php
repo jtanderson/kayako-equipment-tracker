@@ -29,15 +29,49 @@
         <div>
             <h1>Search</h1>
             <h2>Enter the ticket information.</h2>
+            <p>
+                This will search all tickets submitted through the Equipment Tracking System. The information will be displayed below.
+            </p>
         </div>
         <div class="clear"></div>
         <div class="search_container">
-            <input id="ticket_search" class="big-search default-search-text" type="text" value="Ticket ID"/>
-            <input id="ticket_search_submit" type="button" value="Go"/>
-            <script type="text/javascript">
-                $('#ticket_search_submit').button();
-            </script>
+            <form action="javascript:SearchObj.submitSearch();">
+                <input id="ticket_search" class="big-search default-search-text" type="text" value="Ticket ID"/>
+                <input id="ticket_search_submit" type="submit" value="Go" onclick="SearchObj.submitSearch();"/>
+                <script type="text/javascript">
+                    $('#ticket_search_submit').button();
+                </script>
+            </form>
         </div>
+    
+        <?php if ( isset($TicketData) ) { ?>
+            <div class="divide"></div>
+            <?php if ( $TicketData == "[None]" ){ ?>
+                <h2 class="center">No Results</h2>
+            <?php } else { ?>
+                <div class="ticket_data">
+                    <div>
+                        <span class="title"><?php echo $TicketData["Subject"]; ?></span>
+                        <span style="float: right;"><?php echo date('l F j, Y', strtotime($TicketData["CreatedDT"])); ?></span>
+                    </div>
+                    <div class="display_id"><?php echo $TicketData["TicketDisplayID"]; ?></div><br/><br/>
+                    <table>
+                        <tr>
+                            <td class="user_col">
+                                <div><?php echo $TicketData["FirstName"] . " " . $TicketData["LastName"]; ?></div>
+                                <div><?php echo $TicketData["Email"]; ?></div>
+                                <div><?php echo $TicketData["Phone"]; ?></div>
+                            </td>
+                            <td>
+                                <div><?php echo nl2br($TicketData["FullFusionText"]); ?></div>
+                            </td>
+                        </tr>
+                    </table><br/>
+                    <div style="text-align: right;"><span class="barcode"><img src="<?php echo base_url("/cdn/img/barcodes/" . $TicketData["TicketDisplayID"] . ".gif"); ?>"/></span></div style="text-align: center;">
+                </div>
+            <?php //print_r($TicketData);
+            }
+        } ?>
     </div>
     <script type="text/javascript">SearchObj.setSearchBarCSS();</script>
 </div>

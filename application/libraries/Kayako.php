@@ -3,6 +3,13 @@
 /**
  * Kayako API Library
  * 
+ * This file contains funcitons that load and interface with the Kayako Fusion PHP SDK.
+ * To run, it must have access to the CurlRequest library.
+ * 
+ * @author Joseph T. Anderson
+ * @since 2011-12-17
+ * @version 2012-02-15
+ * 
  */
 
 class Kayako
@@ -113,10 +120,20 @@ class Kayako
 		return TRUE;
 	}
 	
-	public function test(){
-		return "HERE";
-	}
-	
+    /**
+     * This function submits the ticket data to the Kayako Fusion server.
+     * 
+     * @author Joseph T. Anderson
+     * @since 2011-12-02
+     * @version 2012-02-15
+     * 
+     * @param Data An associative array containing the essential data to create a ticket
+     *          - Priority: the priority code for the ticket
+     *          - Creator: the ID of the staff creating the ticket
+     *          - Department: the department ID for the ticket
+     *          - Contents: The text to be displayed in the ticket
+     *          - Subject: The subject line for the ticket
+     */
 	public function createTicket($Data){
 	    $default_status_id = kyTicketStatus::getAll()->filterByTitle("Open")->first()->getId();
         $default_priority_id = kyTicketPriority::getAll()->filterByTitle("Normal")->first()->getId();
@@ -190,6 +207,34 @@ class Kayako
         $attachment = kyTicketAttachment::createNew($post, $contents, $name);
         $attachment->create();
         return TRUE;
+    }
+    
+    /**
+     * This function searches the Fusion server for a ticket and returns the data
+     * 
+     * @author Joseph T. Anderson <joe.anderson@email.stvincent.edu>
+     * @since 2012-02-14
+     * @version 2012-02-14
+     * 
+     * @param String $DisplayID The Display ID of the Ticket
+     */
+    function search($ID){
+        return kyTicket::get($ID);
+    }
+    
+    /**
+     * This function queries the Kayako Fusion server and finds a staff user by
+     * a given username.  It then returns the kyStaff object
+     *
+     * @author  Joseph T. Anderson <joe.anderson@email.stvincent.edu>
+     * @since 2012-02-15
+     * @version 2012-02-15
+     * 
+     * @param string Username The username of the reuested user
+     * @return kyUser The user object returned from the call to Kayako
+     */
+    function getStaff($username) {
+        return kyStaff::getAll()->filterByUsername($username)->first();
     }
 }
 

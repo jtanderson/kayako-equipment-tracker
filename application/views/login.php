@@ -61,7 +61,7 @@
 			</td>
 		</tr>
 	</table>
-	<input type="hidden" id="destinationURI" value="<?php echo isset($destination) ? $destination : ''; ?>"/>
+	<input type="hidden" id="destination_url" value="<?php echo $this->session->userdata('destinationURL') ?: ''; ?>"/>
 </div>
 <script type="text/javascript">
 	LoginObj.setButtonProperties();

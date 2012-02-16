@@ -49,5 +49,6 @@ SearchObj.setSearchBarCSS = function(){
  * @version 2012-02-01
  */
 SearchObj.submitSearch = function(){
-	var postData = {};
+	ticketID = $("input#ticket_search").val();
+	location.href = "/search/find/" + ticketID;
 }

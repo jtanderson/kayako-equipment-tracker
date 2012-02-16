@@ -100,6 +100,7 @@ HomeObj.submitTicketData = function(){
 					// Happens when the sync is successful
 					$('div.waiting').hide();
 					var finishedBox = $('div.finished');
+					finishedBox.addClass("barcode");
 					finishedBox.css('text-align', 'center');
 					finishedBox.append( HomeObj.fetchBarcode(json2.TicketID + '') ); // Cast the TicketID to a string and fetch the barcode
 					finishedBox.append("<p>The request is complete.<p>");

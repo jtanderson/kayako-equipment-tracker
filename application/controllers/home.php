@@ -27,6 +27,10 @@
 	 */
  	function __construct(){
  		parent::__construct();
+        if ( $this->uri->segment(2) ){
+            $this->carabiner->css('css/'.$this->uri->segment(2).'.css');
+            $this->carabiner->js('js/' . ( ENVIRONMENT == 'development' ? '_uncompressed/' : '' ) . $this->uri->segment(2).'.js');
+        }
  	}
 	
 	/**
@@ -41,6 +45,7 @@
 	function index(){
 		if ( ! $this->session->userdata('logged_in') ){
             $this->carabiner->js('js/' . ( ENVIRONMENT == 'development' ? '_uncompressed/' : '' ) . 'login.js');
+            // $this->DocumentArray['destinationURL'] = $_SERVER['HTTP_REFERER'];
 			$this->views['login'] = $this->DocumentArray;
 		} else {
 		    // TODO: load priority and department options from Database
@@ -57,8 +62,17 @@
 			// $this->load->view('home', $this->DocumentArray);
 		}
 	}
-    
-     function Settings($UserID = NULL){
+	
+	 /**
+	  * This funciton loads the user's preferences from the database, aggregates
+      * them, and sends them to the settings view.
+	  *
+	  * @author Joseph T. Anderson <joe.anderson@email.stvincent.edu>
+      * @since 2012-01-12
+      * @version 2012-02-15  
+	  *
+      */
+     function settings($UserID = NULL){
          if ( $UserID == NULL ){
              show_404();
          }
@@ -74,6 +88,8 @@
          $this->load->model('Setting');
          $this->load->helper('Array');
          $SettingArray = $this->Setting->getSettingsForUser($UserID);
+         $this->DocumentArray['Settings'] = Array();
+         
          if ( $SettingArray != FALSE ){
             $SettingArray = associate_by('U_Title', $SettingArray);
          
@@ -82,7 +98,6 @@
                 'DefaultTicketPriority'
              );
              
-             $this->DocumentArray['Settings'] = Array();
              foreach ( $SettingsToLoad as $key => $setting ){
                  if ( is_array($SettingArray[$setting]) ){
                      $this->DocumentArray['Settings'][$setting] = $SettingArray[$setting]['Value'] ? $SettingArray[$setting]['Value'] : $SettingArray[$setting]['Default'];
