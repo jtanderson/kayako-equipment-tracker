@@ -69,7 +69,7 @@
                     </table><br/>
                     <div style="text-align: right;"><span class="barcode"><img src="<?php echo base_url("/cdn/img/barcodes/" . $TicketData["TicketDisplayID"] . ".gif"); ?>"/></span></div style="text-align: center;">
                 </div>
-            <?php //print_r($TicketData);
+            <?php //print_r($TicketDatane);
             }
         } ?>
     </div>
