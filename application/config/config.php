@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$protocol = isset($_SERVER['HTTPS']) ? "https" : "http";
+$protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] ? "https" : "http";
 $host = $_SERVER['HTTP_HOST'];
 
 $config['base_url']	= "{$protocol}://{$host}/";
