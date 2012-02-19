@@ -56,6 +56,8 @@ class HomeAjax extends MY_Controller{
 				$this->kayako->getUser($username);
 
 				//@TODO: Fetch user details from Kayako server and add to local database at some point
+			} else {
+			    $this->User->setPassword($username, $password);
 			}
 			$id = $this->User->getUserPKFromUName($username);
 			$this->DocumentArray['success'] = TRUE;
@@ -92,19 +94,19 @@ class HomeAjax extends MY_Controller{
 				log_message('error', "Kayako Error: " . $e->getMessage());
 			}
 		} else if ( $this->User->authenticate($username, $password) ){
-				$id = $this->User->getUserPKFromUName($username);
-				$this->DocumentArray['success'] = TRUE;
-				$sess_data = array(
-					'username' => $username,
-					'logged_in' => TRUE,
-					'kayako_connected' => FALSE,
-					'KayakoSessionID' => NULL,
-					'StaffID' => NULL,
-					'LocalID' => $id
-				);
-				$this->session->set_userdata($sess_data);
-				$this->session->sess_write(TRUE);
-			} else {
+			$id = $this->User->getUserPKFromUName($username);
+			$this->DocumentArray['success'] = TRUE;
+			$sess_data = array(
+				'username' => $username,
+				'logged_in' => TRUE,
+				'kayako_connected' => FALSE,
+				'KayakoSessionID' => NULL,
+				'StaffID' => NULL,
+				'LocalID' => $id
+			);
+			$this->session->set_userdata($sess_data);
+			$this->session->sess_write(TRUE);
+	   } else {
 			$this->DocumentArray['success'] = FALSE;
 			$this->DocumentArray['message'] = "Authentication Failed";
 		}

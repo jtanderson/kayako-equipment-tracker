@@ -57,11 +57,11 @@
                     <div class="display_id"><?php echo $TicketData["TicketDisplayID"]; ?></div><br/><br/>
                     <table>
                         <tr>
-                            <td class="user_col">
+                            <!-- <td class="user_col">
                                 <div><?php echo $TicketData["FirstName"] . " " . $TicketData["LastName"]; ?></div>
                                 <div><?php echo $TicketData["Email"]; ?></div>
                                 <div><?php echo $TicketData["Phone"]; ?></div>
-                            </td>
+                            </td> -->
                             <td>
                                 <div><?php echo nl2br($TicketData["FullFusionText"]); ?></div>
                             </td>

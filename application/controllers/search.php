@@ -64,6 +64,7 @@
          $LocalData = $this->Ticket->find(Array('TicketDisplayID'=>$ticketID));
          // $this->DocumentArray['TicketData'] = $LocalData ?: "[None]";
          $this->DocumentArray['TicketData'] = $LocalData ? $this->Ticket->getTicketData($LocalData['PK_TicketNum']) : "[None]";
+		 $this->DocumentArray['SearchTerm'] = $ticketID;
          //$this->DocumentArray['TicketData'] = $this->kayako->search($LocalData['TicketFusionID']);
          $this->views['search'] = $this->DocumentArray;
      }

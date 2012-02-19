@@ -29,6 +29,7 @@ SettingsObj.setPrefTableInputs = function(){
             	$('.active').removeClass('active');
     			el.addClass('active');
                 var span = el.find('span');
+				var classes = span.attr('class');
                 var val = span.html();
                 var fieldId = span.attr('id');
                 var inp = $('<input type="text"></input>');
@@ -73,6 +74,7 @@ SettingsObj.setPrefTableInputs = function(){
                 inp.blur( function(){
                     var newSpan = $('<span><span>');
                     newSpan.attr('id', fieldId);
+					newSpan.attr('class', classes);
                     var html = MainObj.removeScriptTags($('#'+fieldId).val());
                     newSpan.html( html );
                     $('#'+fieldId).replaceWith(newSpan);

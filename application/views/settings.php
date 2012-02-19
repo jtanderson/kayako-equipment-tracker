@@ -59,17 +59,21 @@
                 </tr>
             </table>
             <table id="prefs_security" class="pref_table" style="display: none;">
-                <tr>
+                <!-- <tr>
                     <td class="pref_title"><span>Permissions?</span></td>
                     <td class="pref_value hybrid"><span id="Permission"><?php echo '';?></span></td>
                     <td class="pref_title"><span>Password</span></td>
                     <td class="pref_value hybrid"><span id="Password"><?php echo '';?></span></td>
-                </tr>
+                </tr> -->
                 <tr>
                     <td class="pref_title"><span>API Key</span></td>
-                    <td class="pref_value hybrid"><span id="APIKey"><?php echo '';?></span></td>
+                    <td class="pref_value hybrid"><span id="APIKey"><?php echo $KayakoAPIKey;?></span></td>
+                    <td class="pref_title"><span>Swift URL</span></td>
+                    <td class="pref_value hybrid"><span id="SwiftURL"><?php echo $SwiftURL; ?></span></td>
+                </tr>
+                <tr>
                     <td class="pref_title"><span>API Secret Key</span></td>
-                    <td class="pref_value hybrid"><span id="APISecretKey"><?php echo '';?></span></td>
+                    <td class="pref_value hybrid"><span id="APISecretKey" class="wrap"><?php echo $KayakoSecretKey; ?></span></td>
                 </tr>
             </table>
         </fieldset>

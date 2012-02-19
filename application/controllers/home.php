@@ -49,6 +49,7 @@
 			$this->views['login'] = $this->DocumentArray;
 		} else {
 		    // TODO: load priority and department options from Database
+//		    $this->load->helper('form');
 		    $this->carabiner->js('js/' . ( ENVIRONMENT == 'development' ? '_uncompressed/' : '' ) . 'home.js');
             
 		    $this->load->model('Priority');
@@ -104,6 +105,11 @@
                  }
              }
          }
+         
+         $this->config->load('kayakofusion');
+         $this->DocumentArray['KayakoAPIKey'] = $this->config->item('KayakoAPIKey');
+         $this->DocumentArray['SwiftURL'] = $this->config->item('SwiftURL');
+         $this->DocumentArray['KayakoSecretKey'] = $this->config->item('KayakoSecretKey');
          
          $this->carabiner->js('js/' . ( ENVIRONMENT == 'development' ? '_uncompressed/' : '' ) . 'settings.js');
          
