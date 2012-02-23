@@ -1,5 +1,5 @@
 <?php
-/*
+/**
  * This is the controller for the TB_Ticket table.
  * 
  * @author Joseph T. Anderson <jtanderson@ratiocaeli.com>
@@ -8,11 +8,25 @@
  */
 
  class Ticket extends MY_Model{
+	 /**
+	  * This is the constructor function for the model
+	  *
+	  * @author Joseph Anderson
+	  */
  	function __construct(){
  		parent::__construct();
         $this->table = "TB_Ticket";
  	}
 	
+	/**
+	 * This function writes the ticket data to the database
+	 *
+	 * @param string $TicketData An associative array of ticket data
+	 * @return boolean Whether or not the transaction was successful
+	 * @author Joseph Anderson
+	 * @since 2011-11-13
+	 * @version 2011-11-13
+	 */
 	function createTicket($TicketData){
 		foreach ( $TicketData as $key => $row ){
 			if ( ! $this->db->field_exists($key, 'TB_Ticket') ){
@@ -26,6 +40,15 @@
 		}
 	}
 	
+	/**
+	 * This funciton returns all data related to a particular ticket
+	 *
+	 * @param string $TicketPK 
+	 * @return void
+	 * @author Joseph Anderson
+	 * @since 2011-11-13
+	 * @version 2011-11-13
+	 */
 	function getTicketData($TicketPK){
 		$this->db->select('*');
 		$this->db->from('TB_Ticket');

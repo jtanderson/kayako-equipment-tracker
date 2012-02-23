@@ -39,7 +39,7 @@
                 </tr>
                 <tr>
                     <td class="pref_title"><span>Username</span></td>
-                    <td class="pref_value hybrid"><span id="U_Username"><?php echo isset($UserData['U_Username']) ? $UserData['U_Username'] : "";?></span></td>
+                    <td class="pref_value"><span id="U_Username"><?php echo isset($UserData['U_Username']) ? $UserData['U_Username'] : "";?></span></td>
                     <td class="pref_title"><span>Email</span></td>
                     <td class="pref_value hybrid"><span id="Email"><?php echo isset($UserData['Email']) ? $UserData['Email'] : "";?></span></td>
                 </tr>

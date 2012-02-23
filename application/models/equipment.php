@@ -9,11 +9,27 @@
  */
 
  class Equipment extends MY_Model{
+	/**
+	 * The model constructor
+	 *
+	 * @author Joseph Anderson
+	 * @since 2011-12-28
+	 * @version 2011-12-28
+	 */
  	function __construct(){
  		parent::__construct();
         $this->table = "TB_Equipment";
  	}
-	
+
+	/**
+	 * This function creates a new record in the TB_Equipment table
+	 *
+	 * @param string $EquipmentArray An array of equipment data
+	 * @return void
+	 * @author Joseph Anderson
+	 * @since 2011-12-28
+	 * @version 2011-12-28
+	 */
 	function createEquipment($EquipmentArray){
 		foreach ( $EquipmentArray as $key => $row ){
 			if ( !$this->db->field_exists($key, 'TB_Equipment') ){
@@ -27,6 +43,15 @@
 		}
 	}
 	
+	/**
+	 * This function returns all data associated with a particular equipment record
+	 *
+	 * @param string $PK The primary key of the equipment
+	 * @return Array The associative array of equipment data
+	 * @author Joseph Anderson
+	 * @since 2011-12-28
+	 * @version 2011-12-28
+	 */
 	function getEquipmentData($PK){
 		$this->db->select('*');
 		$this->db->from('TB_Equipment');
@@ -35,6 +60,15 @@
 		return $query->num_rows() > 0 ? $query->result_array() : FALSE;
 	}
 	
+	/**
+	 * This function uses a ticket foreign key to find the associated equipment
+	 *
+	 * @param string $PK_TicketNum 
+	 * @return Array The associative array of equipment data
+	 * @author Joseph Anderson
+	 * @since 2011-12-28
+	 * @version 2011-12-28
+	 */
 	function getEquipmentForTicket($PK_TicketNum){
 		$this->db->select('*');
 		$this->db->from('TB_Equipment');

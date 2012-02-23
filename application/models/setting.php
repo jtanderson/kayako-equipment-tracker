@@ -8,11 +8,25 @@
  */
 
  class Setting extends MY_Model{
+	/**
+	 * This is the constructor for this model
+	 *
+	 * @author Joseph Anderson
+	 */
      function __construct(){
          parent::__construct();
          $this->table = "TB_Setting";
      }
      
+	/**
+	 * This function uses the Title of a setting to find its primary key
+	 *
+	 * @param string $Title The title of a setting
+	 * @return String The primary key of the setting or FALSE if it does not exist
+	 * @author Joseph Anderson
+	 * @since 2011-12-26
+	 * @version 2011-12-26
+	 */
      function getPKFromTitle($Title){
          $this->db->select('PK_SettingNum');
          $this->db->from($this->table);
@@ -26,6 +40,15 @@
          }
      }
      
+	/**
+	 * This function gets all settings related to a particular user
+	 *
+	 * @param string $UserPK The primary key of a user
+	 * @return Array An associative array of all setting data
+	 * @author Joseph Anderson
+	 * @since 2011-12-26
+	 * @version 2011-12-26
+	 */
      function getSettingsForUser($UserPK){
          $this->db->select('*');
          $this->db->from('TB_Setting S');
