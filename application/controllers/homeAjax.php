@@ -393,31 +393,47 @@ class HomeAjax extends MY_Controller{
 	 *
 	 * @access public
 	 * @return void
-	 * @author Joseph T. Anderson <joe.anderson@ratiocaeli.com>
+	 * @author Joseph T. Anderson <joe.anderson@email.stvincent.edu>
 	 */
-	function updateSettings(){
-		$SettingsArray = $this->input->post('Settings');
-		$UserProfileArray = $this->input->post('UserData');
-		$PKUserNum = $this->input->post('PK_UserNum');
-
-		$this->load->model('User');
-		$this->load->model('Setting');
-		$this->load->model('UserSetting');
-		$this->User->update(array('PK_UserNum'=>$PKUserNum), $UserProfileArray);
-
-		// TODO: Finish saving settings to the database.
-		// TODO: Decide on how to arrange the settings: categories, or all just generic settings? For now, all fields not on the TB_User table will fall into the Settings array
-
-		foreach ( $SettingsArray as $title => $value ){
-			if ( $settingPK = $this->Setting->getPKFromTitle($title) ){
-				if ( ! $this->UserSetting->find_where(array('PKa_UserNum'=>$PKUserNum, 'PKb_SettingNum'=>$settingPK)) ){
-					$this->UserSetting->insert(array('PKa_UserNum'=>$PKUserNum, 'PKb_SettingNum'=>$settingPK, 'Value'=>$value));
-				} else {
-					$this->UserSetting->update_where(array('PKa_UserNum'=>$PKUserNum, 'PKb_SettingNum'=>$settingPK), array('Value'=>$value));
+	function updateSetting(){
+		foreach ( $this->input->post() as $key => $value ){
+			try{
+				$keyArr = explode('-', $key);
+				$category = $keyArr[0];
+				$title = $keyArr[1];
+				switch ($category){
+					case 'User':
+						$this->load->model('User');
+						$this->User->update(Array('U_Username' => $this->session->userdata('username')), Array($title => $value));
+						break;
+					case 'API':
+						$this->load->model('APISetting');
+						$this->APISetting->update(Array('U_Title' => $title), Array('Value' => $value));
+						break;
+					case 'System':
+						$this->load->model('UserSetting');
+						$this->load->model('Setting');
+						$settingnum = $this->Setting->getPKFromTitle($title);
+						if ( !$this->UserSetting->find(Array('PKa_UserNum' => $this->session->userdata('LocalID'), 'PKb_SettingNum' => $settingnum)) ){
+							$this->UserSetting->insert(Array('PKa_UserNum' => $this->session->userdata('LocalID'), 'PKb_SettingNum' => $settingnum, 'Value' => $value));
+						} else {
+							$this->UserSetting->update(Array('PKa_UserNum' => $this->session->userdata('LocalID'), 'PKb_SettingNum' => $settingnum), Array('Value' => $value));
+						}
+						break;
 				}
+			} catch ( Exception $e ){
+				$this->DocumentArray['Errors'] []= $e->getMessage();
 			}
 		}
-
+		$this->DocumentArray['success'] = TRUE;
+		$this->output->append_output(json_encode($this->DocumentArray));
+	}
+	
+	function updateAPI(){
+		$this->load->model('APISetting');
+		foreach ( $this->input->post() as $key => $value ){
+			$this->APISetting->update(Array('U_Title' => $key), Array('Value' => $value));
+		}
 		$this->DocumentArray['success'] = TRUE;
 		$this->output->set_output(json_encode($this->DocumentArray));
 	}

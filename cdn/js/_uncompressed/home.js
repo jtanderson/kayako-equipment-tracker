@@ -3,7 +3,7 @@
  * 
  * This file contains javascript exclusive to the Home page
  * 
- * @author Joseph T. Anderson <jtanderson@ratiocaeli.com>
+ * @author Joseph T. Anderson <joe.anderson@email.stvincent.edu>
  * @since 2011-12-24
  * @version 2011-12-24
  */
@@ -58,7 +58,7 @@ HomeObj.setDocumentDropdownBlur = function(){
  * Curretnly, this function is called by both the button in the upper "fixed" menu element and
  * the submit button on the bottom of the home screen.
  * 
- * @author Joseph T. Anderson <jtanderson@ratiocaeli.com>
+ * @author Joseph T. Anderson <joe.anderson@email.stvincent.edu>
  * @since 2011-10-28
  * @version 2011-11-26
  * 
@@ -127,7 +127,7 @@ HomeObj.submitTicketData = function(){
  * This function was implemented early to emulate more complicated functionality of the
  * jquery.collapse.js library.  Customized for the equipment data blocks.
  * 
- * @author Joseph T. Anderson <jtanderson@ratiocaeli.com>
+ * @author Joseph T. Anderson <joe.anderson@email.stvincent.edu>
  * @since 2011-11-15
  * @version 2011-11-16
  * 
@@ -159,7 +159,7 @@ HomeObj.toggleEquipmentCollapse = function(obj){
  * to change the default equipment name to a more meaningful value.  This title
  * will not itself be passed to the server when the ticket is created.
  * 
- * @author Joseph T. Anderson <jtanderson@ratiocaeli.com>
+ * @author Joseph T. Anderson <joe.anderson@email.stvincent.edu>
  * @since 2011-11-17
  * @version 2011-11-17
  * 
@@ -189,7 +189,7 @@ HomeObj.setEquipmentTitle = function(obj){
  * and clones it.  The id is then altered to be an incremental value based on how many
  * existing equipment blocks are already on the screen.
  * 
- * @author Joseph T. Anderson <jtanderson@ratiocaeli.com>
+ * @author Joseph T. Anderson <joe.anderson@email.stvincent.edu>
  * @since 2011-11-17
  * @version 2011-11-17
  * 
@@ -220,7 +220,7 @@ HomeObj.addEquipment = function(){
  * some reason jquery pulls the remaining blocks out of order, they are sorted
  * according to the integer at the end of their id and then the renaming process begins.
  * 
- * @author Joseph T. Anderson <jtanderson@ratiocaeli.com>
+ * @author Joseph T. Anderson <joe.anderson@email.stvincent.edu>
  * @since 2011-11-17
  * @version 2011-11-17
  * 
@@ -251,7 +251,7 @@ HomeObj.removeEquipment = function(obj){
  * The text parameter is sanatized on the server-side function. All letters are converted
  * to uppercase and spaces are converted to hyphens. Other characters are removed.
  * 
- * @author Joseph T. Anderson <jtanderson@ratiocaeli.com>
+ * @author Joseph T. Anderson <joe.anderson@email.stvincent.edu>
  * @since 2011-11-19
  * @version 2011-11-22
  * 
@@ -291,7 +291,7 @@ HomeObj.fetchBarcode = function(text){
 /**
  * Function: HomeObj.setTabEvents
  * 
- * @author Joseph T. Anderson <jtanderson@ratiocaeli.com>
+ * @author Joseph T. Anderson <joe.anderson@email.stvincent.edu>
  * @since 2012-01-26
  * @version 2012-01-26
  */

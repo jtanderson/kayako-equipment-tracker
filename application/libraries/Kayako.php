@@ -36,14 +36,22 @@ class Kayako
 	 */
 	function __construct(){
 		$CI =& get_instance();
-		$CI->config->load('kayakofusion');
+		// $CI->config->load('kayakofusion');
+		$CI->load->model('APISetting');
+		
 		
 		require_once('CurlRequest.php');
 		$this->Request = new CurlRequest();
 		
-		$this->APIKey = $CI->config->item('KayakoAPIKey');
-		$this->SwiftURL = $CI->config->item('SwiftURL');
-		$this->SecretKey = $CI->config->item('KayakoSecretKey');
+		$APIKeyRecord = $CI->APISetting->find(Array('U_Title' => 'APIKey'));
+		$SwiftURLRecord = $CI->APISetting->find(Array('U_Title' => 'SwiftURL'));
+		$SecretKeyRecord = $CI->APISetting->find(Array('U_Title' => 'APISecretKey'));
+		$this->APIKey = $APIKeyRecord['Value'];
+		$this->SwiftURL = $SwiftURLRecord['Value'];
+		$this->SecretKey = $SecretKeyRecord['Value'];
+		// $this->APIKey = $CI->config->item('KayakoAPIKey');
+		// $this->SwiftURL = $CI->config->item('SwiftURL');
+		// $this->SecretKey = $CI->config->item('KayakoSecretKey');
 		
 		require_once 'Kayako/kyIncludes.php';
 		log_message('debug', "Kayako API Loaded");
@@ -62,7 +70,7 @@ class Kayako
 	 * be useful to make sure the user is a legitimate user of the Kayako Fusion system. The
 	 * method uses a CURL helper (found in CurlRequest.php) to query the server. 
 	 * 
-	 * @author Joseph T. Anderson <jtanderson@ratiocaeli.com>
+	 * @author Joseph T. Anderson <joe.anderson@email.stvincent.edu>
 	 * @since 2011-12-20
 	 * @version 2011-12-20
 	 * 
@@ -91,7 +99,7 @@ class Kayako
 			return $ReturnArray;
             } catch (Exception $e){
                 libxml_use_internal_errors(FALSE);
-                log_message('debug', $e->getMessage);
+                log_message('debug', 'Login Error: ' . $e->getMessage());
                 return FALSE;
             }
  		} else {
@@ -105,7 +113,7 @@ class Kayako
 	 * This function sends a request to the Kayako Fusion server to terminate the session data for the given
 	 * sessionid.
 	 * 
-	 * @author Joseph T. Anderson <jtanderson@ratiocaeli.com>
+	 * @author Joseph T. Anderson <joe.anderson@email.stvincent.edu>
 	 * @since 2011-12-20
 	 * @version 2011-12-20
 	 * 
@@ -157,7 +165,7 @@ class Kayako
 	 * contains a kyTicketPriority object for each ticket priority
 	 * found on the Kayako Fusion system.
 	 * 
-	 * @author Joseph T. Anderson <jtanderson@ratiocaeli.com>
+	 * @author Joseph T. Anderson <joe.anderson@email.stvincent.edu>
 	 * @since 2011-12-17
 	 * @version 2011-12-17
 	 * 
@@ -170,7 +178,7 @@ class Kayako
 	/**
 	 * This function retrieves the available departments in which to create a ticket.
 	 * 
-	 * @author Joseph T. Anderson <jtanderson@ratiocaeli.com>
+	 * @author Joseph T. Anderson <joe.anderson@email.stvincent.edu>
 	 * @since 2011-12-18
 	 * @version 2011-12-18
 	 * 

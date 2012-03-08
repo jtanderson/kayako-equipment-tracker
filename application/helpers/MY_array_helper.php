@@ -2,7 +2,7 @@
 /**
  * This helper extends the CodeIgniter Array Helper
  * 
- * @author Joseph T. Anderson <jtanderson@ratiocaeli.com>
+ * @author Joseph T. Anderson <joe.anderson@email.stvincent.edu>
  * @since 2011-12-29
  * @version 2011-12-29
  */

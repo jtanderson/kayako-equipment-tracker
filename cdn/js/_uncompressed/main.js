@@ -16,7 +16,7 @@ var MainObj = {};
  * essentially replaces the browser's default "alert" box.  When the dialog is closed,
  * the element created is removed from the DOM.
  * 
- * @author Joseph T. Anderson <jtanderson@ratiocaeli.com>
+ * @author Joseph T. Anderson <joe.anderson@email.stvincent.edu>
  * @since 2011-10-28
  * @version 2011-10-28
  * 
@@ -49,7 +49,7 @@ MainObj.jAlert = function(text){
  * stops and simply reloads the page.  When the fuction is successful, the page is reloaded
  * and the login page is displayed.
  * 
- * @author Joseph T. Anderson <jtanderson@ratiocaeli.com>
+ * @author Joseph T. Anderson <joe.anderson@email.stvincent.edu>
  * @since 2011-10-28
  * @version 2011-10-28
  * 
@@ -73,7 +73,7 @@ MainObj.logOut = function(){
  * This funciton uses the default layout for a warning and duplicates it.  The text is then
  * populated using the appropriate parameter.
  * 
- * @author Joseph T. Anderson <jtanderson@ratiocaeli.com>
+ * @author Joseph T. Anderson <joe.anderson@email.stvincent.edu>
  * @since 2011-11-22
  * @version 2011-12-19
  * 
@@ -99,7 +99,7 @@ MainObj.displayWarning = function(text){
  * 
  * This funciton removes a warning. Called from a button within the warning container.
  * 
- * @author Joseph T. Anderson <jtanderson@ratiocaeli.com>
+ * @author Joseph T. Anderson <joe.anderson@email.stvincent.edu>
  * @since 2011-11-23
  * @version 2011-11-23
  * 
@@ -117,7 +117,7 @@ MainObj.removeWarning = function(element){
  * This function removes all warnings on the screen.  Currently only called
  * from submitTicketData.
  * 
- * @author Joseph T. Anderson <jtanderson@ratiocaeli.com>
+ * @author Joseph T. Anderson <joe.anderson@email.stvincent.edu>
  * @since 2011-11-23
  * @version 2011-11-23
  * 

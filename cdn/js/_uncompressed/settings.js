@@ -3,7 +3,7 @@
  * 
  * This file contains the javascript exclusive to the /Home/Settings module
  * 
- * @author Joseph T. Anderson <jtanderson@ratiocaeli.com>
+ * @author Joseph T. Anderson <joe.anderson@email.stvincent.edu>
  * @since 2011-12-24
  * @version 2011-12-24
  */
@@ -17,7 +17,7 @@ var SettingsObj = {};
  * inputs when they are clicked and back to <span> elements when the focus
  * is lost.
  * 
- * @author Joseph T. Anderson <jtanderson@ratiocaeli.com>
+ * @author Joseph T. Anderson <joe.anderson@email.stvincent.edu>
  * @since 2011-12-23
  * @version 2011-12-24
  */
@@ -41,7 +41,8 @@ SettingsObj.setPrefTableInputs = function(){
                 inp.keydown( function(e){
                 	switch ( e.which ){
                 		case 13:
-                			$(this).blur();
+                			$(this).change();
+							$(this).blur();
                 			break;
                 		case  9:
                 			event.preventDefault();
@@ -71,6 +72,9 @@ SettingsObj.setPrefTableInputs = function(){
                 			break;
                 	}
                 });
+				inp.change( function(){
+					SettingsObj.updateSetting($(this));
+				});
                 inp.blur( function(){
                     var newSpan = $('<span><span>');
                     newSpan.attr('id', fieldId);
@@ -91,7 +95,7 @@ SettingsObj.setPrefTableInputs = function(){
  * 
  * This function handles the submission of setting values to the server.
  * 
- * @author Joseph T. Anderson <jtanderson@ratiocaeli.com>
+ * @author Joseph T. Anderson <joe.anderson@email.stvincent.edu>
  * @since 2011-12-24
  * @version 2011-12-24
  */
@@ -114,6 +118,16 @@ SettingsObj.saveSettings = function(){
 		}
 	}, 'json');
 	// console.log( postData );
+}
+
+
+SettingsObj.updateSetting = function(el){
+	var postData = {};
+	postData[$(el).attr('id')] = $(el).val();
+	console.log(postData);
+	$.post('/homeAjax/updateSetting', postData, function(json){
+		console.log(json);
+	}, 'json');
 }
 
 SettingsObj.setTabEvents = function(){

@@ -2,7 +2,7 @@
 /*
  * This is the model file to interact with the TB_Equipment table on the database
  * 
- * @author Joseph T. Anderson <jtanderson@ratiocaeli.com>
+ * @author Joseph T. Anderson <joe.anderson@email.stvincent.edu>
  * @since 2011-11-26
  * @version 2011-11-26
  * 

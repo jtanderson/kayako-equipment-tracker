@@ -3,7 +3,7 @@
  * 
  * This file contains the javascript exclusive to the login page
  * 
- * @author Joseph T. Anderson <jtanderson@ratiocaeli.com>
+ * @author Joseph T. Anderson <joe.anderson@email.stvincent.edu>
  * @since 2011-12-24
  * @version 2011-12-24
  */
@@ -17,7 +17,7 @@ var LoginObj = {};
  * authentication.  On a successful login, the user is directed to the home page. On failure, a
  * notice is displayed.
  * 
- * @author Joseph T. Anderson <jtanderson@ratiocaeli.com>
+ * @author Joseph T. Anderson <joe.anderson@email.stvincent.edu>
  * @since 2011-10-28
  * @version 2011-10-28
  */

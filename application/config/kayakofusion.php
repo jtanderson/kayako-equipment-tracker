@@ -3,7 +3,7 @@
  * This is the configuration file to hold all the appropriate details
  * for connecting to Kayako Fusion
  * 
- * @author Joseph T. Anderson <jtanderson@ratiocaeli.com>
+ * @author Joseph T. Anderson <joe.anderson@email.stvincent.edu>
  * @since 2011-12-16
  * @version 2011-12-16
  * 

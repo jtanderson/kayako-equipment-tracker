@@ -3,7 +3,7 @@
  * This is the view for the login page.  It will be shown
  * if the user does not have a session or is not logged in.
  * 
- * @author Joseph T. Anderson <jtanderson@ratiocaeli.com>
+ * @author Joseph T. Anderson <joe.anderson@email.stvincent.edu>
  * @since 2011-09-30
  * @version 2011-09-30
  */

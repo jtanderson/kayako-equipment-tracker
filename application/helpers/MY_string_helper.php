@@ -7,7 +7,7 @@
  * the CodeIgniter system, any function in the file whose name
  * collides with one of the string helper will override that funciton.
  * 
- * @author Joseph T. Anderson <jtanderson@ratiocaeli.com>
+ * @author Joseph T. Anderson <joe.anderson@email.stvincent.edu>
  * @since 2011-12-20
  */
 

@@ -4,7 +4,7 @@
  * 
  * Interfaces with the TB_Priority table on the database
  * 
- * @author Josph T. Anderson <jtanderson@ratiocaeli.com
+ * @author Josph T. Anderson <joe.anderson@email.stvincent.edu
  * @since 2011-12-28
  * @version 2011-12-28
  */

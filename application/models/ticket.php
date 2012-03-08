@@ -2,7 +2,7 @@
 /**
  * This is the controller for the TB_Ticket table.
  * 
- * @author Joseph T. Anderson <jtanderson@ratiocaeli.com>
+ * @author Joseph T. Anderson <joe.anderson@email.stvincent.edu>
  * @since 2011-11-13
  * @version 2011-11-13
  */

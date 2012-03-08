@@ -21,7 +21,7 @@
 	 * constructor which handles the appropriate actions designated
 	 * by the URL.
 	 * 
-	 * @author Joseph T. Anderson <jtanderson@ratiocaeli.com>
+	 * @author Joseph T. Anderson <joe.anderson@email.stvincent.edu>
 	 * @since 2011-09-30
 	 * @version 2011-12-17
 	 */
@@ -106,10 +106,11 @@
              }
          }
          
-         $this->config->load('kayakofusion');
-         $this->DocumentArray['KayakoAPIKey'] = $this->config->item('KayakoAPIKey');
-         $this->DocumentArray['SwiftURL'] = $this->config->item('SwiftURL');
-         $this->DocumentArray['KayakoSecretKey'] = $this->config->item('KayakoSecretKey');
+         // $this->config->load('kayakofusion');
+		 $this->load->model('APISetting');
+         $this->DocumentArray['KayakoAPIKey'] = $this->APISetting->find(Array('U_Title' => 'APIKey'));
+         $this->DocumentArray['SwiftURL'] = $this->APISetting->find(Array('U_Title' => 'SwiftURL'));
+         $this->DocumentArray['KayakoSecretKey'] = $this->APISetting->find(Array('U_Title' => 'APISecretKey'));
          
          $this->carabiner->js('js/' . ( ENVIRONMENT == 'development' ? '_uncompressed/' : '' ) . 'settings.js');
          
