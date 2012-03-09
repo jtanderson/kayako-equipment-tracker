@@ -36,7 +36,7 @@ environment along with the /installation folder after you get the site set up.
 
 Once you get the files, browse to http://yourservername.com/install and enter the items to set up the MySQL database.
 
-For now, the system should be the root it's respective virtual host.  Other configuration is theoretically
+For now, the system should be at the root of its respective virtual host.  Other configuration is theoretically
 possible but has not been tested.
 
 ### Kayako Fusion Settings
@@ -45,7 +45,7 @@ For the moment, you must enter the settings for your Kayako Fusion server by han
 Using phpMyadmin, command-line, or whatever, enter your API Key, Secret Key, and SWIFT URL (just the main URL
 of the Kayako Server into the "Value" field of the appropriate setting on the TB_APISetting table).  This should
 later be integrated into the install script.  One must log into the system and be validated by the Kayako server
-at least once to be able to log in without proper Kayako API settings.
+at least once to be able to log in without proper Kayako API settings.G
 
 Notes
 -----
