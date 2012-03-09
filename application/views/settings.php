@@ -52,12 +52,6 @@
                     <td class="pref_title"><span>Default Ticket Department</span></td>
                     <td class="pref_value hybrid"><span id="System-DefaultTicketDepartment"><?php echo isset($Settings['DefaultTicketDepartment']) ? $Settings['DefaultTicketDepartment'] : "";?></span></td>
                 </tr>
-                <!-- <tr>
-                                    <td class="pref_title"><span>Color Theme</span></td>
-                                    <td class="pref_value hybrid"><span id="System-Theme"><?php echo '';?></span></td>
-                                    <td class="pref_title"><span>Some Other Option</span></td>
-                                    <td class="pref_value hybrid"><span id="System-Other"><?php echo '';?></span></td>
-                                </tr> -->
 				<tr>
 					<td colspan="4" style="padding-top: 20px; padding-bottom: 10px;"></td>
 				</tr>
@@ -72,16 +66,7 @@
                     <td class="pref_value hybrid"><span id="API-APISecretKey" class="wrap"><?php echo $KayakoSecretKey['Value']; ?></span></td>
                 </tr>
             </table>
-            <!-- <table id="prefs_security" class="pref_table" style="display: none;">
-                <tr>
-                    <td class="pref_title"><span>Permissions?</span></td>
-                    <td class="pref_value hybrid"><span id="Permission"><?php echo '';?></span></td>
-                    <td class="pref_title"><span>Password</span></td>
-                    <td class="pref_value hybrid"><span id="Password"><?php echo '';?></span></td>
-                </tr>
-            </table> -->
         </fieldset>
-        <!-- <div style="text-align: right;"><input type="button" id="settings_submit" value="Submit" onclick="SettingsObj.saveSettings();"/></div> -->
     </div>
     <script type="text/javascript">
         $('#settings_submit').button();

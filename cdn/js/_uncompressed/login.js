@@ -35,13 +35,11 @@ LoginObj.submitLogin = function(){
     	message: '<h1 style="color: inherit;">Please Wait...</h1>'
     });
 	$('#login_button').attr('disabled', 'disabled');
-	// $('#login_button').val('Please Wait...');
 	postData = {};
 	postData['Username'] = $('#Username').val();
 	postData['Password'] = $('#Password').val();
 	
 	$.post('/homeAjax/authenticateUser', postData, function(json){
-		console.log(json);
 		if ( json['success'] != undefined && json['success'] == true ){
 			if ( $('#bad_login').is(':visible') ){
 				$('#bad_login').toggle();
@@ -58,7 +56,6 @@ LoginObj.submitLogin = function(){
 			$('#Username').focus();
 		}
 		$('#login_button').removeAttr('disabled');
-		// $('#login_button').val('Login');
 	}, 'json');
 }
 

@@ -124,9 +124,8 @@ SettingsObj.saveSettings = function(){
 SettingsObj.updateSetting = function(el){
 	var postData = {};
 	postData[$(el).attr('id')] = $(el).val();
-	console.log(postData);
 	$.post('/homeAjax/updateSetting', postData, function(json){
-		console.log(json);
+		// TODO: Add some sort of confirmation
 	}, 'json');
 }
 
