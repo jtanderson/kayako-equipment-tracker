@@ -29,7 +29,7 @@ The recommended hosting setup is an Apache server. The following modules are use
 * mod_rewrite - see this [Codeigniter Wiki entry](http://codeigniter.com/wiki/mod_rewrite)
 * mod_cache - to serve resources faster and more efficiently
 
-You will also need PHP 5 with CURL, and MySQL.
+You will also need PHP 5 with cURL, and MySQL.
 
 One can find my vhost configuration files under the /etc folder to use as a guide. You should delete these from your production 
 environment along with the /installation folder after you get the site set up.
