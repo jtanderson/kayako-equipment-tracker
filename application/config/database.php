@@ -35,8 +35,8 @@
 */
 
 // The following values will probably need to be changed.
-$db['default']['username'] = "root";
-$db['default']['password'] = "";
+$db['default']['username'] = "kayako";
+$db['default']['password'] = "kayakodev";
 $db['default']['database'] = "db_kayako";
 
 // The following values can probably stay the same.
