@@ -228,20 +228,50 @@ h1 {
 	width: 20px;
 }
 
-a.add_item{
-	color: black;
+.add_item{
 	text-decoration: none;
 	font-family: Helvetica, Arial, Helvetica, sans-serif;
 	font-size: 12pt;
 }
 
-a.add_item:hover{
+#add_equipment_container{
+	display: inline-block;
+	background-color: #19BD4A;
+	border: 2px solid #DDD;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	text-shadow: none;
+}
+
+#add_equipment_container:hover{
+	background-color: #148035;
+	border-color: #333;
+	color: #333;
+	text-decoration: none;
+	color: #DDD;
+}
+
+#add_equipment_table{
+	padding-left: 15px;
+	padding-right: 15px;
+	color: black;
+}
+
+#add_equipment_table td{
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+/*
+
+.add_item:hover{
 	text-decoration: underline;
 }
 
-a.add_item:visited{
+.add_item:visited{
 	color: black;
 }
+*/
 
 #Equipment_DEFAULT {
 	display: none;

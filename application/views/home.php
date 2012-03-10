@@ -225,16 +225,20 @@
         				</td>
         			</tr>
         		</table>
-        		<table>
-        			<tr class="add_equipment">
-        				<td>
-        					<a href="javascript:HomeObj.addEquipment();"><img src="<?php echo base_url("/cdn/img/green_plus.png"); ?>" class="plus_icon" /></a>
-        				</td>
-        				<td>
-        					<a href="javascript:HomeObj.addEquipment();" class="add_item">Add Item</a>
-        				</td>
-        			</tr>
-        		</table>
+				<div id="add_equipment_container">
+					<a href="javascript:HomeObj.addEquipment();">
+	        		<table id="add_equipment_table">
+	        			<tr class="add_equipment">
+	        				<td>
+	        					<img src="<?php echo base_url("/cdn/img/green_plus.png"); ?>" class="plus_icon" />
+	        				</td>
+	        				<td>
+	        					<span class="add_item">Add Item</span>
+	        				</td>
+	        			</tr>
+	        		</table>
+					<a>
+				<div>
         	    <div class="clear"></div>
     	    </div>
 	    </form>
