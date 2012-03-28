@@ -94,6 +94,33 @@ MainObj.displayWarning = function(text){
 	}
 }
 
+
+MainObj.displayMessage = function(text, options){
+	if ( options == undefined ){options = {}};
+	if ( text != undefined && typeof(text) == "string" ){
+		var container = $('#message_container');
+		var newErrorBox = $('#DEFAULT_warning').clone();
+		var idx = $('#message_container').find("[id$=_warning]").not("#DEFAULT_warning").length;
+		newErrorBox.attr('id', idx+'_warning');
+		newErrorBox.find('.warning_text').html(text);
+		// newErrorBox.css('display','');
+		
+		if ( options.classes != undefined ){
+			newErrorBox.addClass(options.classes)
+		}
+		
+		if ( options.fadeout != undefined ){
+			setTimeout(function(){newErrorBox.fadeOut(1000);}, options.fadeout);
+		}
+
+		container.append(newErrorBox);
+		newErrorBox.fadeIn(1000);
+	} else {
+		console.log("Warning: displayMessage function called with unacceptable parameters.");
+	}
+}
+
+
 /**
  * Function removeWarning
  * 

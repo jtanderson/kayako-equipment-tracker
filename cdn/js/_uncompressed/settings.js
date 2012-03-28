@@ -120,15 +120,34 @@ SettingsObj.saveSettings = function(){
 	// console.log( postData );
 }
 
-
+/**
+ * Sends the data to the backend and displays confirmation
+ * 
+ * @author Joseph T. Anderson <jtanderson@ratiocaeli.com>
+ * @since 2012-03-26
+ * @version 2012-03-26
+ * 
+ * @param el An element that holds the setting to update
+ */
 SettingsObj.updateSetting = function(el){
 	var postData = {};
 	postData[$(el).attr('id')] = $(el).val();
 	$.post('/homeAjax/updateSetting', postData, function(json){
 		// TODO: Add some sort of confirmation
+		if ( json.success ){
+			$.growlUI('System Notification', 'The changes have been saved.'); 
+		}
 	}, 'json');
 }
 
+
+/**
+ * Sets up the tab interface events.
+ * 
+ * @author Joseph T. Anderson <jtanderson@ratiocaeli.com>
+ * @since 2012-03-26
+ * @version 2012-03-26
+ */
 SettingsObj.setTabEvents = function(){
 	$('legend span').each( function(){
 		$(this).click( function(){

@@ -402,3 +402,8 @@ legend span:hover{
 	color: #c3c3c3;
 /*	background-color: #222;*/
 }
+
+div.growlUI { background: url(/cdn/img/check36.png) no-repeat 10px 10px; }
+div.growlUI h1, div.growlUI h2 {
+	color: white; padding: 5px 5px 5px 75px; text-align: left
+}

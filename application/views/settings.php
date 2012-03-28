@@ -15,7 +15,7 @@
     <input type="hidden" id="PK_UserNum" value="<?php echo $this->session->userdata('LocalID');?>"/>
     <div id="message_container">
         <div id="DEFAULT_warning" style="display:none;" class="message">
-            <a href="#" onclick="removeWarning(this);" class="remove_warning"><img style="height: 15px; width: 15px;" src="/cdn/img/moblin-close.png"/></a>
+            <a href="#" onclick="MainObj.removeWarning(this);" class="remove_warning"><img style="height: 15px; width: 15px;" src="/cdn/img/moblin-close.png"/></a>
             <table>
                 <tr>
                     <td><img src="/cdn/img/Red_triangle_alert_icon.png" class="error_img"/></td>
