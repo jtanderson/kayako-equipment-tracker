@@ -36,6 +36,19 @@ class Database {
 
 		// Execute a multi query
 		$mysqli->multi_query($query);
+		
+		
+		/**
+		 *  Insert the Kayako Fusion Settings into the database
+		 */
+		$KayakoQuery = "INSERT INTO `TB_APISetting` (`PK_APISettingNum`, `U_Title`, `Value`, `Display_Title`) VALUES
+		(1, 'APIKey', '%s', 'API Key'),
+		(2, 'SwiftURL', '%s', 'Swift URL'),
+		(3, 'APISecretKey', '%s', 'API Secret Key');";
+		
+		$query = sprintf($KayakoQuery, $mysqli->real_escape_string($data['kayakoapi']), $mysqli->real_escape_string($data['swifturl']), $mysqli->real_escape_string($data['kayakosecretkey']));
+		
+		$mysqli->multi_query($query);
 
 		// Close the connection
 		$mysqli->close();

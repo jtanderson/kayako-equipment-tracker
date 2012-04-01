@@ -24,9 +24,21 @@ class Core {
 		if(isset($data['database']) AND !empty($data['database'])) {
 			$counter++;
 		}
+		// Validate the Kayako API Key
+		if(isset($data['kayakoapi']) AND !empty($data['kayakoapi'])){
+			$counter++;
+		}
+		// Validate the Swift URL
+		if(isset($data['swifturl']) AND !empty($data['swifturl'])){
+			$counter++;
+		}
+		// Validate the Kayako Secret Key
+		if(isset($data['kayakosecretkey']) AND !empty($data['kayakosecretkey'])){
+			$counter++;
+		}
 
 		// Check if all the required fields have been entered
-		if($counter == '3') {
+		if($counter == '6') {
 			return true;
 		}
 		else {

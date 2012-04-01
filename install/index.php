@@ -1,6 +1,6 @@
 <?php
 
-error_reporting(E_NONE);
+error_reporting(E_ALL);
 
 $db_config_path = '../application/config/database.php';
 
@@ -97,11 +97,14 @@ if($_POST) {
 
 		  <form id="install_form" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
         <fieldset>
-          <legend>Database settings</legend>
-          <label for="hostname">Hostname</label><input type="text" id="hostname" value="localhost" class="input_text" name="hostname" />
-          <label for="username">Username</label><input type="text" id="username" class="input_text" name="username" />
-          <label for="password">Password</label><input type="password" id="password" class="input_text" name="password" />
+          <legend>System settings</legend>
+          <label for="hostname">Database Hostname</label><input type="text" id="hostname" value="localhost" class="input_text" name="hostname" />
+          <label for="username">Database Username</label><input type="text" id="username" class="input_text" name="username" />
+          <label for="password">Database Password</label><input type="password" id="password" class="input_text" name="password" />
           <label for="database">Database Name</label><input type="text" id="database" class="input_text" name="database" />
+  		  <label for="database">Kayako API Key</label><input type="text" id="kayakoapi" class="input_text" name="kayakoapi" />
+		  <label for="database">Kayako URL</label><input type="text" id="swifturl" class="input_text" name="swifturl" />
+		  <label for="database">Kayako Secret Key</label><input type="text" id="kayakosecretkey" class="input_text" name="kayakosecretkey" />
           <input type="submit" value="Install" id="submit" />
         </fieldset>
 		  </form>
