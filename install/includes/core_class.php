@@ -26,19 +26,19 @@ class Core {
 		}
 		// Validate the Kayako API Key
 		if(isset($data['kayakoapi']) AND !empty($data['kayakoapi'])){
-			$counter++;
+			//None
 		}
 		// Validate the Swift URL
 		if(isset($data['swifturl']) AND !empty($data['swifturl'])){
-			$counter++;
+			//None
 		}
 		// Validate the Kayako Secret Key
 		if(isset($data['kayakosecretkey']) AND !empty($data['kayakosecretkey'])){
-			$counter++;
+			//None
 		}
 
 		// Check if all the required fields have been entered
-		if($counter == '6') {
+		if($counter == 3) {
 			return true;
 		}
 		else {
