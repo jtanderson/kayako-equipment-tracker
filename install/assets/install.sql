@@ -169,6 +169,12 @@ CREATE TABLE IF NOT EXISTS `TB_User` (
 -- --------------------------------------------------------
 
 --
+-- Dumping data for table `TB_User`
+--
+
+INSERT INTO `db_kayako`.`TB_User` (`PK_UserNum`, `First`, `Last`, `Password`, `Email`, `U_Username`) VALUES (NULL, 'Offline', 'Administrator', MD5('OfflineAdmin'), '', 'OfflineAdmin');
+
+--
 -- Table structure for table `TB_UserSetting`
 --
 
