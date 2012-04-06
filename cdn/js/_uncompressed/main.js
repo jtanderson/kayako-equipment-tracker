@@ -55,7 +55,7 @@ MainObj.jAlert = function(text){
  * 
  */
 MainObj.logOut = function(){
-	$.post('/homeAjax/logOut', {}, function(json){
+	$.post(BASE_URL + 'homeAjax/logOut', {}, function(json){
 		console.log(json);
 		if ( json.success != undefined && json.success ){
 			location.href="/";
