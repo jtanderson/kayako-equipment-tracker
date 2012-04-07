@@ -36,9 +36,17 @@ class Core {
 		if(isset($data['kayakosecretkey']) AND !empty($data['kayakosecretkey'])){
 			//None
 		}
+		// Validate the Offline Administrator Username
+		if(isset($data['offlineadminname']) AND !empty($data['offlineadminname'])){
+			$counter++;
+		}
+		// Validate the Offline Administrator Password
+		if(isset($data['offlineadminpassword']) AND !empty($data['offlineadminpassword'])){
+			$counter++;
+		}
 
 		// Check if all the required fields have been entered
-		if($counter == 3) {
+		if($counter == 5) {
 			return true;
 		}
 		else {

@@ -9,6 +9,24 @@
 
 -- --------------------------------------------------------
 
+
+--
+-- Table structure for table `ci_sessions`
+--
+
+DROP TABLE IF EXISTS `ci_sessions`;
+CREATE TABLE IF NOT EXISTS `ci_sessions` (
+  `session_id` varchar(40) NOT NULL DEFAULT '0',
+  `previous_id` varchar(40) NOT NULL DEFAULT '0',
+  `ip_address` varchar(16) NOT NULL DEFAULT '0',
+  `user_agent` varchar(50) NOT NULL,
+  `last_rotate` int(10) unsigned NOT NULL DEFAULT '0',
+  `last_write` int(10) unsigned NOT NULL DEFAULT '0',
+  `user_data` text NOT NULL,
+  PRIMARY KEY (`session_id`,`previous_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
 --
 -- Table structure for table `TB_APISetting`
 --
@@ -22,15 +40,6 @@ CREATE TABLE IF NOT EXISTS `TB_APISetting` (
   PRIMARY KEY (`PK_APISettingNum`),
   UNIQUE KEY `U_Title` (`U_Title`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
-
---
--- Dumping data for table `TB_APISetting`
---
-
-INSERT INTO `TB_APISetting` (`PK_APISettingNum`, `U_Title`, `Value`, `Display_Title`) VALUES
-(1, 'APIKey', '', 'API Key'),
-(2, 'SwiftURL', '', 'Swift URL'),
-(3, 'APISecretKey', '', 'API Secret Key');
 
 -- --------------------------------------------------------
 
@@ -169,12 +178,6 @@ CREATE TABLE IF NOT EXISTS `TB_User` (
 -- --------------------------------------------------------
 
 --
--- Dumping data for table `TB_User`
---
-
-INSERT INTO `db_kayako`.`TB_User` (`PK_UserNum`, `First`, `Last`, `Password`, `Email`, `U_Username`) VALUES (NULL, 'Offline', 'Administrator', MD5('OfflineAdmin'), '', 'OfflineAdmin');
-
---
 -- Table structure for table `TB_UserSetting`
 --
 
@@ -189,22 +192,6 @@ CREATE TABLE IF NOT EXISTS `TB_UserSetting` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
-
---
--- Table structure for table `ci_sessions`
---
-
-DROP TABLE IF EXISTS `ci_sessions`;
-CREATE TABLE IF NOT EXISTS `ci_sessions` (
-  `session_id` varchar(40) NOT NULL DEFAULT '0',
-  `previous_id` varchar(40) NOT NULL DEFAULT '0',
-  `ip_address` varchar(16) NOT NULL DEFAULT '0',
-  `user_agent` varchar(50) NOT NULL,
-  `last_rotate` int(10) unsigned NOT NULL DEFAULT '0',
-  `last_write` int(10) unsigned NOT NULL DEFAULT '0',
-  `user_data` text NOT NULL,
-  PRIMARY KEY (`session_id`,`previous_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
 --
