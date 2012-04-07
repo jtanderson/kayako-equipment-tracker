@@ -199,6 +199,9 @@ class Kayako
      * @since 2012-02-05
      * @version 2012-02-05
      * 
+     * @param $TicketID The ID of the ticket
+     * @param $BarcodePath The path to the ticket on the local server
+     * 
      */
     public function addTicketBarcode($TicketID = "", $BarcodePath = ""){
         if ( $TicketID == "" || $BarcodePath == "" ){
@@ -224,7 +227,7 @@ class Kayako
      * @since 2012-02-14
      * @version 2012-02-14
      * 
-     * @param String $DisplayID The Display ID of the Ticket
+     * @param String $ID The ID of the Ticket
      */
     function search($ID){
         return kyTicket::get($ID);
@@ -241,7 +244,7 @@ class Kayako
      * @param string Username The username of the reuested user
      * @return kyUser The user object returned from the call to Kayako
      */
-    function getStaff($username) {
+    function getStaffByUsername($username) {
         return kyStaff::getAll()->filterByUsername($username)->first();
     }
 }
