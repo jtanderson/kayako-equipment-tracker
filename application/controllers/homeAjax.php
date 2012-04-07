@@ -52,7 +52,11 @@ class HomeAjax extends MY_Controller{
 		if ( $username !== 'OfflineAdmin' && ($KayakoLogin = $this->kayako->logIn($username, $password)) !== FALSE && $KayakoLogin['status'] == "1"){
 			if ( ! $this->User->userExists($username) ){
 				$this->User->addUser($username, md5($password));
-				$this->kayako->getUser($username);
+				$staff = $this->kayako->getStaffByUsername($username);
+				
+				$this->User->update(Array('U_Username' => $this->session->userdata('username')), Array('First' => $staff->getFirstName()));
+				$this->User->update(Array('U_Username' => $this->session->userdata('username')), Array('Last' => $staff->getLastName()));
+				$this->User->update(Array('U_Username' => $this->session->userdata('username')), Array('Email' => $staff->getEmail()));
 
 				//@TODO: Fetch user details from Kayako server and add to local database at some point
 			} else {
@@ -311,11 +315,6 @@ class HomeAjax extends MY_Controller{
 		$this->output->append_output(json_encode($this->DocumentArray));
 	}
 
-	function test(){
-		$this->load->library('Kayako');
-		$this->output->append_output($this->kayako->test());
-	}
-
 	/**
 	 * This function will return an image file to the requesting agent.
 	 * To access this image, create a <img> tag with the src attribute
@@ -388,7 +387,8 @@ class HomeAjax extends MY_Controller{
 
 
 	/**
-	 * updateSettings function.
+	 * updateSettings function. This function uses the POST array to update entries in the database
+	 * that are system-wide settings or user-specific ones.
 	 *
 	 * @access public
 	 * @return void
