@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Kayako Equipment Tracker : Kayako Extension to Track End-User Equipment" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Kayako Equipment Tracker</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/jtanderson/kayako-equipment-tracker">Fork Me on GitHub</a>
+
+          <h1 id="project_title">Kayako Equipment Tracker</h1>
+          <h2 id="project_tagline">Kayako Extension to Track End-User Equipment</h2>
+
+          <section id="downloads">
+            <a class="zip_download_link" href="https://github.com/jtanderson/kayako-equipment-tracker/zipball/master">Download this project as a .zip file</a>
+            <a class="tar_download_link" href="https://github.com/jtanderson/kayako-equipment-tracker/tarball/master">Download this project as a tar.gz file</a>
+          </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>Kayako Equipment Tracking System</h1>
+
+<p>This project is written by <a href="http://www.ratiocaeli.com">Joseph Anderson</a>.  This system is a standalone web-application with the goal of aiding users of the Kayako Fusion service 
+software to better regulate the influx of end-user equipment. The software is not a replacement for any 
+part of the Kayako Fusion system - it's most standard use case is this:  A user arrives at the Service 
+Desk, Help Desk, etc. with her laptop, charger, and a peripheral such as an external hard driver.  All 
+this equipment is now the responsibility of the technicians assisting this troubled person.  Unfortunately, 
+if this is a frequent occurrence, it would be shocking if somethings of hers was <em>not</em> mixed up with 
+somebody else equipment, lost, or otherwise.  Using our Kayako Equipment Tracking System, the diligent 
+service technician pulls up the application, enters the user's information and logs each separate piece 
+of equipment she brought.  The system then creates a ticket on the Kayako Fusion server to reflect the 
+main issue of the hardware and item each piece of equipment related to that issue. The system then creates 
+a barcode with the Kayako Fusion Display ID (e.g. KF-2213-J) and generates a barcode which the technician 
+can then print out and affix to the user's equipment.  It can then be scanned directly into the Kayako 
+Fusion Software's search function to determine its exact purpose and owner.</p>
+
+<p>It is written using the <a href="http://codeigniter.com/">CodeIgniter</a> PHP framework.</p>
+
+<h2>Installation</h2>
+
+<p>This is still in an "Alpha" state, as all planned features have not been implemented.  However, installation should
+be possible. Later, a more streamlined and portable installation script is planned.</p>
+
+<p>The recommended hosting setup is an Apache server. The following modules are used in my current setup:</p>
+
+<ul>
+<li>mod_ssl - the site is built to take advantage of cross-site encryption with SSL, recommended but not necessary</li>
+<li>mod_rewrite - see this <a href="http://codeigniter.com/wiki/mod_rewrite">Codeigniter Wiki entry</a>
+</li>
+<li>mod_cache - to serve resources faster and more efficiently</li>
+</ul><p>You will also need PHP 5 with cURL, MySQL, and MySQLi.</p>
+
+<p>One can find my vhost configuration files under the /etc folder to use as a guide. You should delete these 
+from your production environment along with the /installation folder after you get the site set up.</p>
+
+<p>Once you get the files, browse to <a href="http://yourservername.com/install">http://yourservername.com/install</a> and enter the items to set up the MySQL database.</p>
+
+<p>The installation script adds an offline user with username and password "OfflineAdmin" - of course the password should be
+changed after installation. This will hopefully be done by the install script in the future.</p>
+
+<p>For now, the system should be at the root of its respective virtual host.  Other configuration is theoretically
+possible but has not been tested.</p>
+
+<p>Once you have finished the installation and verified that it is working, you should delete the /install directory 
+and all of its contents.</p>
+
+<h3>Kayako Fusion Settings</h3>
+
+<p>Note that there is an offline user included in the installation (Username: OfflineAdmin / Password: OfflineAdmin - for now) so 
+that if something goes wrong and the system cannot authenticate against the Kayako Fusion server, one can log in to change 
+the API settings.  The API settings are found under the "System" tab of the settings page.</p>
+
+<h2>Notes</h2>
+
+<p>One can visit the project page on the <a href="http://forge.kayako.com/projects/client-equipment-management">Kayako Forge</a> for
+a more complete wiki, calendar, forum, issue tracking, and roadmap.</p>
+
+<p>Note that support <em>is not</em> planned in the far future, as hopefully this (or just the concept) can be ported 
+directly to a Kayako Fusion module and dropped into an existing server.</p>
+
+<p>Of course one may feel free to clone and change the software - it is licensed under the Open Software License ("OSL") v 3.0.</p>
+
+<p><a href="http://www.ratiocaeli.com">Developer Site</a></p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Kayako Equipment Tracker maintained by <a href="https://github.com/jtanderson">jtanderson</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("<script type="text/javascript">    var _gaq = _gaq || [];   _gaq.push(['_setAccount', 'UA-30544183-1']);   _gaq.push(['_trackPageview']);    (function() {     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);   })();  </script>");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+
+  </body>
+</html>
