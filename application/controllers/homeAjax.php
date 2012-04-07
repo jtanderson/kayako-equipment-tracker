@@ -49,7 +49,7 @@ class HomeAjax extends MY_Controller{
 		$username = $this->input->post('Username');
 		$password = $this->input->post('Password');
 
-		if ( $username !== 'OfflineAdmin' && ($KayakoLogin = $this->kayako->logIn($username, $password)) !== FALSE && $KayakoLogin['status'] == "1"){
+		if ( ($KayakoLogin = $this->kayako->logIn($username, $password)) !== FALSE && $KayakoLogin['status'] == "1"){
 			if ( ! $this->User->userExists($username) ){
 				$this->User->addUser($username, md5($password));
 				$staff = $this->kayako->getStaffByUsername($username);

@@ -37,7 +37,7 @@
 // The following values will probably need to be changed.
 $db['default']['username'] = "kayako";
 $db['default']['password'] = "kayakodev";
-$db['default']['database'] = "db_kayako_tester";
+$db['default']['database'] = "db_kayako";
 
 // The following values can probably stay the same.
 $db['default']['hostname'] = "localhost";

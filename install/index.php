@@ -99,6 +99,7 @@ if($_POST) {
 				<form id="install_form" method="post" class="well" action="<?php echo $_SERVER['PHP_SELF']; ?>">
 					<fieldset id="install_panel_1">
 						<legend>Database</legend>
+						<p>This is the basic setup to connect to the database. The user should already exist, but the table will be created for you.</p>
 						<label for="hostname">Database Hostname</label><input type="text" id="hostname" value="localhost" class="input_text" name="hostname" />
 						<label for="username">Database Username</label><input type="text" id="username" class="input_text" name="username" />
 						<label for="password">Database Password</label><input type="password" id="password" class="input_text" name="password" />
@@ -107,17 +108,20 @@ if($_POST) {
 					</fieldset>
 					<fieldset id="install_panel_2" style="display:none;">
 						<legend>Kayako Fusion</legend>
+						<p>Enter the details for the system to access the Kayako Fusion server.  The URL is the base url of your Kayako server with no trailing slash.</p>
 		  		  		<label for="kayakoapi">Kayako API Key</label><input type="text" id="kayakoapi" class="input_text" name="kayakoapi" />
 				  		<label for="swifturl">Kayako URL</label><input type="text" id="swifturl" class="input_text" name="swifturl" />
 				  		<label for="kayakosecretkey">Kayako Secret Key</label><input type="text" id="kayakosecretkey" class="input_text" name="kayakosecretkey" /><br/>
-						<input type="button" class="btn" value="Back &#x2190;" onclick="previousPanel();" id="next_1" />
+						<input type="button" class="btn" value="&#x2190; Back" onclick="previousPanel();" id="next_1" />
 						<input type="button" class="btn" value="Next &#x2192;" onclick="nextPanel();" id="next_1" />
 					</fieldset>
 					<fieldset id="install_panel_3" style="display:none;">
 						<legend>Offline Administrator</legend>
+						<p>This is a user which will be created on the database and can be used to access the system when a connection to Kayako Fusion is unavailable.
+							The username chosen should not be one that could appear on the Kayako Fusion Server.</p>
 						<label for="offlineadminname">Name</label><input type="text" id="offlineadminname" class="input_text" name="offlineadminname" />
 						<label for="offlineadminpassword">Password</label><input type="password" id="offlineadminpassword" class="input_text" name="offlineadminpassword" /><br/>
-						<input type="button" class="btn" value="Back &#x2190;" onclick="previousPanel();" id="next_1" />
+						<input type="button" class="btn" value="&#x2190; Back" onclick="previousPanel();" id="next_1" />
 						<input type="submit" class="btn btn-primary" value="Finish" id="submit" />
 					</fieldset>
 				</form>
