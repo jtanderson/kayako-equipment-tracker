@@ -161,7 +161,7 @@ class Kayako
 	}
 	
 	/**
-	 * This function returns an obect (over which can be iterated) that
+	 * This function returns an object (over which can be iterated) that
 	 * contains a kyTicketPriority object for each ticket priority
 	 * found on the Kayako Fusion system.
 	 * 
@@ -241,7 +241,7 @@ class Kayako
      * @since 2012-02-15
      * @version 2012-02-15
      * 
-     * @param string Username The username of the reuested user
+     * @param string Username The username of the requested user
      * @return kyUser The user object returned from the call to Kayako
      */
     function getStaffByUsername($username) {

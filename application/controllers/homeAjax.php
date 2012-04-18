@@ -120,7 +120,7 @@ class HomeAjax extends MY_Controller{
 	/**
 	 * Function logOut
 	 *
-	 * This funciton simply destroys the current session.  By doing this, the user
+	 * This function simply destroys the current session.  By doing this, the user
 	 * is "logged out" of the system.
 	 *
 	 * @author Joseph T. Anderson <joe.anderson@email.stvincent.edu>
@@ -143,7 +143,7 @@ class HomeAjax extends MY_Controller{
 	 * Function submitTicketData
 	 *
 	 * This function takes the ticket data sent through POST variables.  Form validation
-	 * libaries are invoked with appropriate rules.  Any error stops the function and sends
+	 * libraries are invoked with appropriate rules.  Any error stops the function and sends
 	 * the validation errors in a JSON format to be displayed to the user.  If the form
 	 * validation runs without error, then the data in passed to the Ticket, Equipment,
 	 * and User models to be entered into the ticket log.
@@ -241,7 +241,7 @@ class HomeAjax extends MY_Controller{
 	 * @since 2011-11-30
 	 * @version 2011-11-30
 	 *
-	 * @param Integer $LocalTicketID The ID of the ticket on this system passed throught the POST variable 'PK_TicketNum'
+	 * @param Integer $LocalTicketID The ID of the ticket on this system passed through the POST variable 'PK_TicketNum'
 	 */
 
 	function syncTicketWithFusion(){

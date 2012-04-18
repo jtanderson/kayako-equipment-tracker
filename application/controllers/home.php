@@ -36,7 +36,7 @@
 	/**
 	 * The default function of the home controller (as configured
 	 * in the routes.php configuration file).  If the user is logged
-	 * in, the main page is laoded.  If not, a login screen in shown.
+	 * in, the main page is loaded.  If not, a login screen in shown.
 	 * 
 	 * @author Joseph T. Anderson <jtanderson@raticaeli.com>
 	 * @since 2011-09-30
@@ -65,7 +65,7 @@
 	}
 	
 	 /**
-	  * This funciton loads the user's preferences from the database, aggregates
+	  * This function loads the user's preferences from the database, aggregates
       * them, and sends them to the settings view.
 	  *
 	  * @author Joseph T. Anderson <joe.anderson@email.stvincent.edu>
