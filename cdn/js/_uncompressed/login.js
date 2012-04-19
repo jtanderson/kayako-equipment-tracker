@@ -39,7 +39,7 @@ LoginObj.submitLogin = function(){
 	postData['Username'] = $('#Username').val();
 	postData['Password'] = $('#Password').val();
 	
-	$.post(BASE_URL + 'homeAjax/authenticateUser', postData, function(json){
+	$.post(BASE_URL + '/homeAjax/authenticateUser', postData, function(json){
 		if ( json['success'] != undefined && json['success'] == true ){
 			if ( $('#bad_login').is(':visible') ){
 				$('#bad_login').toggle();

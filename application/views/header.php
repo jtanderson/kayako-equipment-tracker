@@ -14,7 +14,7 @@
 		<title>Kayako Equipment Tracker</title>
 		<?php $this->carabiner->display('css'); $this->carabiner->display('js'); ?>
 		<script type="text/javascript">
-			var BASE_URL = "<?php echo site_url(); ?>";
+			var BASE_URL = "<?php echo (substr(site_url(), -1) == '/' ? substr(site_url(), 0, -1) : site_url()); ?>";
 		</script>
 	</head>
 	<!-- Begin Body -->

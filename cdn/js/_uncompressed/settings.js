@@ -110,7 +110,7 @@ SettingsObj.saveSettings = function(){
 		postData['Settings[' + $(this).attr('id') + ']'] = $(this).html();
 	});
 	postData['PK_UserNum'] = $('#PK_UserNum').val();
-	$.post(BASE_URL + 'homeAjax/updateSettings', postData, function(json){
+	$.post(BASE_URL + '/homeAjax/updateSettings', postData, function(json){
 		if ( json.success != undefined && json.success == true ){
 			console.log('Success');
 		} else {
@@ -132,7 +132,7 @@ SettingsObj.saveSettings = function(){
 SettingsObj.updateSetting = function(el){
 	var postData = {};
 	postData[$(el).attr('id')] = $(el).val();
-	$.post(BASE_URL + 'homeAjax/updateSetting', postData, function(json){
+	$.post(BASE_URL + '/homeAjax/updateSetting', postData, function(json){
 		// TODO: Add some sort of confirmation
 		if ( json.success ){
 			$.growlUI('System Notification', 'The changes have been saved.'); 
