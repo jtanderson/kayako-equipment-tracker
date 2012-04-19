@@ -8,7 +8,6 @@
  * 
  */
  ?>
-<applet name="jZebra" code="jzebra.PrintApplet.class" codebase="<?php echo base_url('(cdn/java/jzebra/)'); ?>" alt="jZebra did not load properly" archive="<?php echo base_url('cdn/java/jzebra/jzebra.jar'); ?>" width="0" height="0"><param name="printer" value="zebra"></applet>
  <div class="main-panel">
 	<div id="message_container">
 		<div id="DEFAULT_warning" style="display:none;" class="message">
@@ -123,7 +122,7 @@
     						<td>
     							<select name="Priority"	id="Priority">
     								<?php foreach ( $Priorities as $priority ){ ?>
-    								<option value="<?php echo $priority['PriorityFusionID'];?>"><?php echo $priority['U_PriorityTitle']; ?></option>									
+    								<option value="<?php echo $priority['PriorityFusionID'];?>" <?php echo $priority['U_PriorityTitle'] == $Settings['DefaultTicketPriority'] ? "selected='selected'" : ""; ?>><?php echo $priority['U_PriorityTitle']; ?></option>									
     								<?php } ?>
     							</select>
     							<script type="text/javascript">
@@ -133,7 +132,7 @@
     						<td style="padding-left: 110px;">
     							<select name="Department" id="Department">
     								<?php foreach ( $Departments as $department ){ ?>
-    								<option value="<?php echo $department['DepartmentFusionID'];?>"><?php echo $department['U_DepartmentTitle']; ?></option>									
+    								<option value="<?php echo $department['DepartmentFusionID'];?>" <?php echo $department['U_DepartmentTitle'] == $Settings['DefaultTicketDepartment'] ? "selected='selected'" : ""; ?>><?php echo $department['U_DepartmentTitle']; ?></option>									
     								<?php } ?>
     							</select>
     							<script type="text/javascript">
@@ -177,10 +176,10 @@
         						</tr>
         						<tr>
         							<td>
-        								<input type="text" id="Make" size="35" onkeyup="HomeObj.setEquipmentTitle(this);"/>
+        								<input type="text" id="Make" placeholder="e.g. Apple" size="35" onkeyup="HomeObj.setEquipmentTitle(this);"/>
         							</td>
         							<td>
-        								<input type="text" id="Model" size="35" onkeyup="HomeObj.setEquipmentTitle(this);"/>
+        								<input type="text" id="Model" placeholder="e.g. Macbook Pro" size="35" onkeyup="HomeObj.setEquipmentTitle(this);"/>
         							</td>
         						</tr>
         						<tr>
@@ -192,7 +191,7 @@
         						</tr>
         						<tr>
         							<td>
-        								<input type="text" id="Type" size="35"/>
+        								<input type="text" id="Type" placeholder="e.g. Laptop" size="35"/>
         							</td>
         							<td>
         							</td>
@@ -205,7 +204,7 @@
         						</tr>
         						<tr>
         							<td colspan="2">
-        								<textarea id="Notes"></textarea>
+        								<textarea id="Notes" placeholder="Serial Number, problems, etc."></textarea>
         							</td>
         						</tr>
         						<tr>
@@ -258,9 +257,6 @@
 	 		<div style="text-align: center;"><img src="<?php echo base_url("/cdn/img/load.gif"); ?>" alt="Waiting" title="Waiting"></div>
  		</div>
  		<div class="finished">
-			<div id="print_options">
-				<input type="button" value="Print Options">
-			</div>
  		</div>
  	</div>
 	 <script type="text/javascript">
