@@ -9,7 +9,7 @@
  */
 ?>
 	<div class="footer_data">
-		Developed by Joseph T. Anderson<br/>
+		Developed by <a href="http://www.ratiocaeli.com" alt="RatioCaeli.com" style="color:black; text-decoration:none;" target="_blank">Joseph T. Anderson</a><br/>
 		Powered by CodeIgniter: Version <?php echo CI_VERSION;?>
 	</div>
 	<script type="text/javascript">	
