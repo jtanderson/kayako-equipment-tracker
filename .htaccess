@@ -1,0 +1,30 @@
+Allow from all
+Order Allow,deny
+Options +FollowSymLinks -Indexes
+DirectoryIndex index.php
+
+<IfModule rewrite_module>
+	SetEnv HTTP_MOD_REWRITE On
+	
+	RewriteEngine On
+	
+	# Remove index.php from the URL
+	RewriteCond %{HTTP:X-Requested-With} !^XMLHttpRequests$
+	RewriteCond %{THE_REQUEST} ^[^/]*/index\.php [NC]
+	RewriteRule ^index\.php(.*)$ $1 [R=301,NS,L]
+	
+	# Keep people out of the codeigntier and repo files
+	RedirectMatch 403 ^/(system\/cms\/cache|system\/codeigniter|\.git|\.hg).*$
+	
+	# Send request via index.php (if it's not a file or directory)
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	
+	<IfModule php5_module>
+		RewriteRule ^(.*)$ index.php/$1 [L]
+	</IfModule>
+	<IfModule !php5_module>
+		RewriteRule ^(.*)$ index.php/$1 [L]
+	</IfModule>
+	
+</IfModule>
