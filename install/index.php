@@ -30,10 +30,54 @@ if($_POST) {
 
 		// If no errors, redirect to registration page
 		if(!isset($message)) {
-		  $redir = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == "on") ? "https" : "http");
-      $redir .= "://".$_SERVER['HTTP_HOST'];
-      $redir .= str_replace(basename($_SERVER['SCRIPT_NAME']),"",$_SERVER['SCRIPT_NAME']);
-      $redir = str_replace('install/','',$redir);
+			if ( isset($_POST['removeinstalldirectory']) ){
+				if ( ! function_exists('delete_files'))
+				{
+					function delete_files($path, $del_dir = FALSE, $level = 0)
+					{
+						// Trim the trailing slash
+						$path = rtrim($path, DIRECTORY_SEPARATOR);
+
+						if ( ! $current_dir = @opendir($path))
+						{
+							return FALSE;
+						}
+
+						while (FALSE !== ($filename = @readdir($current_dir)))
+						{
+							if ($filename != "." and $filename != "..")
+							{
+								if (is_dir($path.DIRECTORY_SEPARATOR.$filename))
+								{
+									// Ignore empty folders
+									if (substr($filename, 0, 1) != '.')
+									{
+										delete_files($path.DIRECTORY_SEPARATOR.$filename, $del_dir, $level + 1);
+									}
+								}
+								else
+								{
+									unlink($path.DIRECTORY_SEPARATOR.$filename);
+								}
+							}
+						}
+						@closedir($current_dir);
+
+						if ($del_dir == TRUE AND $level > 0)
+						{
+							return @rmdir($path);
+						}
+
+						return TRUE;
+					}
+				}
+				
+				delete_files('../install', TRUE);
+			}
+			$redir = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == "on") ? "https" : "http");
+			$redir .= "://".$_SERVER['HTTP_HOST'];
+			$redir .= str_replace(basename($_SERVER['SCRIPT_NAME']),"",$_SERVER['SCRIPT_NAME']);
+			$redir = str_replace('install/','',$redir);
 			header( 'Location: ' . $redir . 'home' ) ;
 		}
 
@@ -121,6 +165,7 @@ if($_POST) {
 							The username chosen should not be one that could appear on the Kayako Fusion Server.</p>
 						<label for="offlineadminname">Name</label><input type="text" id="offlineadminname" class="input_text" name="offlineadminname" />
 						<label for="offlineadminpassword">Password</label><input type="password" id="offlineadminpassword" class="input_text" name="offlineadminpassword" /><br/>
+						Remove Install Directory&nbsp;&nbsp;<input type="checkbox" name="removeinstalldirectory" value="removeinstalldirectory" id="removeinstalldirectory"/><br/><br/>
 						<input type="button" class="btn" value="&#x2190; Back" onclick="previousPanel();" id="next_1" />
 						<input type="submit" class="btn btn-primary" value="Finish" id="submit" />
 					</fieldset>
