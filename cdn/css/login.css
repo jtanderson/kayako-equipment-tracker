@@ -14,7 +14,9 @@
 }
 
 .login_box table{
-	margin: 20px;
+	margin-top: 10px;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .login_box h2{
@@ -41,9 +43,15 @@
 	color: red;
 }
 
-.big_logo{
-	height: 175px;
-	width: 150px;
+div.big_logo{
+	background-image:url('../img/kayako2.png');
+	background-position: 0px 0px;
+	height: 60px;
+	width: 125px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 40px;
+	margin-bottom: 50px;
 }
 
 #browser_warning{
@@ -87,4 +95,15 @@
 
 #warning_details{
 	font-size: 11pt;
+}
+
+.login_top{
+	background-color:#99B7D9;
+	display: inline-block;
+	-webkit-border-radius: 5px;
+}
+
+#login_form{
+	border-top: 1px dashed #3d3d3d;
+	display:none;
 }
