@@ -54,6 +54,33 @@
             
 		    $this->load->model('Priority');
             $this->load->model('Department');
+			$this->load->model('Setting');
+			$this->load->model('UserSetting');
+			
+			/**
+			 * Get the user settings and send them all to the view
+			 */
+			
+			$SettingArray = $this->Setting->getSettingsForUser($this->session->userdata('LocalID'));
+			$this->DocumentArray['Settings'] = Array();
+
+	         if ( $SettingArray != FALSE ){
+	         		        $this->load->helper('Array');
+	            $SettingArray = associate_by('U_Title', $SettingArray);
+	         
+	             $SettingsToLoad = Array(
+	                'DefaultTicketDepartment',
+	                'DefaultTicketPriority'
+	             );
+	         
+	             foreach ( $SettingsToLoad as $key => $setting ){
+	                 if ( is_array($SettingArray[$setting]) ){
+	                     $this->DocumentArray['Settings'][$setting] = $SettingArray[$setting]['Value'] ? $SettingArray[$setting]['Value'] : $SettingArray[$setting]['Default'];
+	                 }
+	             }
+	         }
+			
+			
             $this->DocumentArray['Departments'] = $this->Department->find_all();
             $this->DocumentArray['Priorities'] = $this->Priority->find_all();
             if ( ! $this->session->userdata('kayako_connected') ){
