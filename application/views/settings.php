@@ -63,7 +63,7 @@
                 </tr>
                 <tr>
                     <td class="pref_title"><span>API Secret Key</span></td>
-                    <td class="pref_value hybrid"><span id="API-APISecretKey" class="wrap"><?php echo $KayakoSecretKey['Value']; ?></span></td>
+                    <td class="pref_value hybrid" colspan="3"><span id="API-APISecretKey" class="wrap"><?php echo $KayakoSecretKey['Value']; ?></span></td>
                 </tr>
             </table>
         </fieldset>
