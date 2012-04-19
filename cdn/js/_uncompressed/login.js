@@ -81,15 +81,15 @@ LoginObj.setBrowserInfo = function(){
 
 LoginObj.setButtonProperties = function(){
 	$('input#Username').focus();
-	$('input#Password').keyup(function(e){
-		if ( e.keyCode == 13 ){
-			$('#login_button').click();
-		}
-	});
-	$('input#Username').keyup(function(e){
-		if ( e.keyCode == 13 ){
-			$('#login_button').click();
-		}
-	});
+	// $('input#Password').keyup(function(e){
+	// 	if ( e.keyCode == 13 ){
+	// 		LoginObj.submitLogin();
+	// 	}
+	// });
+	// $('input#Username').keyup(function(e){
+	// 	if ( e.keyCode == 13 ){
+	// 		LoginObj.submitLogin();
+	// 	}
+	// });
 	$('#login_button').button();
 }
