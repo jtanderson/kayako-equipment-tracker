@@ -20,8 +20,8 @@ It is written using the [CodeIgniter](http://codeigniter.com/) PHP framework.
 Installation
 ------------
 
-This is still in an "Alpha" state, as all planned features have not been implemented.  However, installation should
-be possible. Later, a more streamlined and portable installation script is planned.
+The software is now in beta. The installation procedure will be activated the first time you access
+the system.
 
 The recommended hosting setup is an Apache server. The following modules are used in my current setup:
 
@@ -50,9 +50,10 @@ and all of its contents.
 
 ### Kayako Fusion Settings
 
-Note that there is an offline user included in the installation (Username: OfflineAdmin / Password: OfflineAdmin - for now) so 
-that if something goes wrong and the system cannot authenticate against the Kayako Fusion server, one can log in to change 
-the API settings.  The API settings are found under the "System" tab of the settings page.
+If at the time of installation, the API settings are entered incorrectly, one can use the Offline Administrator
+created during installation to change the settings on the system.
+
+The API settings are found under the "System" tab of the settings page.
 
 Notes
 -----
