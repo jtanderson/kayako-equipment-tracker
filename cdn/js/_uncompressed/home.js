@@ -100,10 +100,9 @@ HomeObj.submitTicketData = function(){
 					// Happens when the sync is successful
 					$('div.waiting').hide();
 					var finishedBox = $('div.finished');
-					finishedBox.addClass("barcode");
 					finishedBox.css('text-align', 'center');
 					finishedBox.append( HomeObj.fetchBarcode(json2.TicketID + '') ); // Cast the TicketID to a string and fetch the barcode
-					finishedBox.append("<p>The request is complete.<p>");
+					finishedBox.append("<p>The request is complete. Click the above bar code to open in a new tab for printing, saving, etc.<p>");
 					finishedBox.show();
 				} else {
 					// Ticket did not sync and was not created in Kayako Fusion
@@ -270,6 +269,7 @@ HomeObj.fetchBarcode = function(text){
 		return;
 	}
 	var newImg = $('<img />');
+	var link = $("<a></a>");
 	text = text.replace(/[^a-zA-Z0-9- ]/g, '');
 	$.ajax({
 		url: '/homeAjax/createBarcode',
@@ -279,13 +279,18 @@ HomeObj.fetchBarcode = function(text){
 		dataType: 'json',
 		success: function(json){
 			if ( json.success != undefined && json.success ){
+				$(link).attr("href", json.ImageLocation)
+					.attr("alt", "Link to barcode image.")
+					.attr("target", "_blank")
+					.addClass("barcode");
 				$(newImg).attr('src', json.ImageLocation);
+				$(link).append(newImg);
 			} else {
 				console.log('An error has occurred...');
 			}
 		}
 	});
-	return newImg;
+	return link;
 }
 
 /**
