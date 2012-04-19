@@ -73,6 +73,7 @@ class Core {
 		$new  = str_replace("%USERNAME%",$data['username'],$new);
 		$new  = str_replace("%PASSWORD%",$data['password'],$new);
 		$new  = str_replace("%DATABASE%",$data['database'],$new);
+		$new  = str_replace('$config[\'firstrun\'] = FALSE;', '$config[\'firstrun\'] = TRUE;', $new);
 
 		// Write the new database.php file
 		$handle = fopen($output_path,'w+');

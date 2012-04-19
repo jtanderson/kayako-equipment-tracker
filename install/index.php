@@ -109,9 +109,9 @@ if($_POST) {
 					<fieldset id="install_panel_2" style="display:none;">
 						<legend>Kayako Fusion</legend>
 						<p>Enter the details for the system to access the Kayako Fusion server.  The URL is the base url of your Kayako server with no trailing slash.</p>
-		  		  		<label for="kayakoapi">Kayako API Key</label><input type="text" id="kayakoapi" placeholder="e.g. 24c1a733-837f-57e4-f9e9-13de5c3cc671" class="input_text" name="kayakoapi" />
-				  		<label for="swifturl">Kayako URL (no trailing slash)</label><input type="text" placeholder="e.g. http://servicedesk.mydomain.com" id="swifturl" class="input_text" name="swifturl" />
-				  		<label for="kayakosecretkey">Kayako Secret Key</label><input type="text" id="kayakosecretkey" class="input_text" name="kayakosecretkey" /><br/>
+		  		  		<label for="kayakoapi">Kayako API Key</label><input type="text" id="kayakoapi" placeholder="e.g. 24c1a733-837f-57e4-f9e9-13de5c3cc671" class="input_text span7" name="kayakoapi" />
+				  		<label for="swifturl">Kayako URL (no trailing slash)</label><input type="text" placeholder="e.g. http://servicedesk.mydomain.com" id="swifturl" class="input_text span7" name="swifturl" />
+				  		<label for="kayakosecretkey">Kayako Secret Key</label><input type="text" id="kayakosecretkey" class="input_text span7" name="kayakosecretkey" /><br/>
 						<input type="button" class="btn" value="&#x2190; Back" onclick="previousPanel();" id="next_1" />
 						<input type="button" class="btn" value="Next &#x2192;" onclick="nextPanel();" id="next_1" />
 					</fieldset>

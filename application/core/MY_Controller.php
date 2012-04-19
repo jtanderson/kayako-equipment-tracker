@@ -14,7 +14,10 @@
     
  	function __construct(){
  		parent::__construct();
-        // $this->output->enable_profiler(TRUE);
+		$this->load->config('database');
+		if ( $this->config->item('firstrun') == FALSE ){
+			redirect('/install');
+		}
 		
 		if ( ! $this->input->is_ajax_request() ){
             // $this->output->cache(15);

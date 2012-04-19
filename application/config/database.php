@@ -39,6 +39,9 @@ $db['default']['username'] = "kayako";
 $db['default']['password'] = "kayakodev";
 $db['default']['database'] = "db_kayako";
 
+// A flag to denote wheter the user has run the install script
+$config['firstrun'] = FALSE;
+
 // The following values can probably stay the same.
 $db['default']['hostname'] = "localhost";
 $db['default']['dbdriver'] = "mysql";

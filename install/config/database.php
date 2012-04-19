@@ -39,6 +39,9 @@ $db['default']['username'] = "%USERNAME%";
 $db['default']['password'] = "%PASSWORD%";
 $db['default']['database'] = "%DATABASE%";
 
+// A flag to denote wheter the user has run the install script
+$config['firstrun'] = FALSE;
+
 // The following values can probably stay the same.
 $db['default']['hostname'] = "%HOSTNAME%";
 $db['default']['dbdriver'] = "mysql";
