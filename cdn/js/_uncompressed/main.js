@@ -58,7 +58,7 @@ MainObj.logOut = function(){
 	$.post(BASE_URL + '/homeAjax/logOut', {}, function(json){
 		console.log(json);
 		if ( json.success != undefined && json.success ){
-			location.href="/";
+			location.href=BASE_URL;
 		} else {
 			alert('There has been an error while trying to log out.');
 		}

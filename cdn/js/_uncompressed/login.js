@@ -23,8 +23,8 @@ var LoginObj = {};
  */
 
 LoginObj.submitLogin = function(){
-	$.blockUI({ css: { 
-        border: 'none', 
+	$.blockUI({ css: {
+        border: 'none',
         padding: '15px', 
         backgroundColor: '#000', 
         '-webkit-border-radius': '10px', 
