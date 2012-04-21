@@ -35,12 +35,12 @@
 */
 
 // The following values will probably need to be changed.
-$db['default']['username'] = "kayako";
-$db['default']['password'] = "kayakodev";
-$db['default']['database'] = "kayako_deleteme";
+$db['default']['username'] = "";
+$db['default']['password'] = "";
+$db['default']['database'] = "";
 
 // A flag to denote wheter the user has run the install script
-$config['firstrun'] = TRUE;
+$config['firstrun'] = FALSE;
 
 // The following values can probably stay the same.
 $db['default']['hostname'] = "localhost";
