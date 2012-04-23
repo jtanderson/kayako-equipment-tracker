@@ -40,7 +40,7 @@ $db['default']['password'] = "";
 $db['default']['database'] = "";
 
 // A flag to denote wheter the user has run the install script
-$config['firstrun'] = FALSE;
+// $config['firstrun'] = FALSE;
 
 // The following values can probably stay the same.
 $db['default']['hostname'] = "localhost";

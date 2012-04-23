@@ -25,7 +25,7 @@ if($_POST) {
 		} else if ($database->create_tables($_POST) == false) {
 			$message = $core->show_message('error',"The database tables could not be created, please verify your settings.");
 		} else if ($core->write_config($_POST) == false) {
-			$message = $core->show_message('error',"The database configuration file could not be written, please chmod /application/config/database.php file to 777");
+			$message = $core->show_message('error',"The database configuration file or index file could not be written, please chmod the main index.php and /application/config/database.php file to 777");
 		}
 
 		// If no errors, redirect to registration page
@@ -74,6 +74,7 @@ if($_POST) {
 				
 				delete_files('../install', TRUE);
 			}
+			
 			$redir = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == "on") ? "https" : "http");
 			$redir .= "://".$_SERVER['HTTP_HOST'];
 			$redir .= str_replace(basename($_SERVER['SCRIPT_NAME']),"",$_SERVER['SCRIPT_NAME']);
