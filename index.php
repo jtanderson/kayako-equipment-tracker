@@ -195,6 +195,19 @@ if (defined('ENVIRONMENT'))
 
 		define('APPPATH', BASEPATH.$application_folder.'/');
 	}
+	
+/**
+ * --------------------------------------------------------------------
+ * REDIRECT TO THE INSTALL SCRIPT IF IT HASN'T BEEN RUN YET
+ * -------------------------------------------------------------------- 
+ */
+
+	if ( defined('FIRSTRUN') && FIRSTRUN == FALSE ){
+		$protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] ? "https" : "http";
+		$root = "{$protocol}://".$_SERVER['HTTP_HOST'];
+		$root .= str_replace(basename($_SERVER['SCRIPT_NAME']),"",$_SERVER['SCRIPT_NAME']);
+		header('Location: ' . $root . 'install/');exit;
+	}
 
 /*
  * --------------------------------------------------------------------
