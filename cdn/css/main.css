@@ -297,7 +297,7 @@ h1 {
 .inactive,
 .expansion{
 	cursor: pointer;
-	background: url("/cdn/img/arrows.png") no-repeat 0 -33px;
+	background: url("../img/arrows.png") no-repeat 0 -33px;
 	padding-left: 25px;
 }
 
@@ -363,7 +363,7 @@ h1 {
 	float: right;
 	width: 16px;
 	height: 16px;
-	background: url("/cdn/img/small_arrow.gif") no-repeat 50% 50%;
+	background: url("../img/small_arrow.gif") no-repeat 50% 50%;
 	background-position: 50% 50%;
 	background-repeat: no-repeat;
 }
@@ -407,7 +407,7 @@ legend span:hover{
 /*	background-color: #222;*/
 }
 
-div.growlUI { background: url(/cdn/img/check36.png) no-repeat 10px 10px; }
+div.growlUI { background: url('../img/check36.png') no-repeat 10px 10px; }
 div.growlUI h1, div.growlUI h2 {
 	color: white; padding: 5px 5px 5px 75px; text-align: left
 }
