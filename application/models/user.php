@@ -46,7 +46,7 @@
  	function authenticate($username, $password){
  		$this->db->select('*');
 		$this->db->from('TB_User');
-		$this->db->where(array('U_Username' => $username, 'Password' => $this->__encrypt($password)));
+		$this->db->find_where(array('U_Username' => $username, 'Password' => $this->__encrypt($password)));
 		$query = $this->db->get();
 		return $query->num_rows() == 1;
  	}
