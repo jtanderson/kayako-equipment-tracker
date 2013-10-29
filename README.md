@@ -4,7 +4,7 @@ Kayako Equipment Tracking System
 This system is a standalone web-application with the goal of aiding users of the Kayako Fusion service 
 software to better regulate the influx of end-user equipment. The software is not a replacement for any 
 part of the Kayako Fusion system - it's most standard use case is this:  A user arrives at the Service 
-Desk, Help Desk, etc. with her laptop, charger, and a peripheral such as an external hard driver.  All 
+Desk, Help Desk, etc. with her laptop, charger, and a peripheral such as an external hard drive.  All 
 this equipment is now the responsibility of the technicians assisting this troubled person.  Unfortunately, 
 if this is a frequent occurrence, it would be shocking if somethings of hers was *not* mixed up with 
 somebody else equipment, lost, or otherwise.  Using our Kayako Equipment Tracking System, the diligent 
