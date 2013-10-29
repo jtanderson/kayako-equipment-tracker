@@ -6,8 +6,7 @@ software to better regulate the influx of end-user equipment. The software is no
 part of the Kayako Fusion system - it's most standard use case is this:  A user arrives at the Service 
 Desk, Help Desk, etc. with her laptop, charger, and a peripheral such as an external hard drive.  All 
 this equipment is now the responsibility of the technicians assisting this troubled person.  Unfortunately, 
-if this is a frequent occurrence, it would be shocking if somethings of hers was *not* mixed up with 
-somebody else equipment, lost, or otherwise.  Using our Kayako Equipment Tracking System, the diligent 
+if this is a frequent occurrence, it would be shocking if something of hers was *not* mixed up, lost, or otherwise. Using our Kayako Equipment Tracking System, the diligent 
 service technician pulls up the application, enters the user's information and logs each separate piece 
 of equipment she brought.  The system then creates a ticket on the Kayako Fusion server to reflect the 
 main issue of the hardware and item each piece of equipment related to that issue. The system then creates 
