@@ -35,7 +35,7 @@ class kyTicketType extends kyObjectBase {
 		$this->display_icon = $data['displayicon'];
 		$this->type = $data['type'];
 		$this->user_visibility_custom = intval($data['uservisibilitycustom']) === 0 ? false : true;
-		if ($this->user_visibility_custom && is_array($data['usergroupid'])) {
+		if ($this->user_visibility_custom && isset($data['usergroupid']) && is_array($data['usergroupid'])) {
 			foreach ($data['usergroupid'] as $user_group_id) {
 				$this->user_group_ids[] = intval($user_group_id);
 			}
