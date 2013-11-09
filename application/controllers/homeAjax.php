@@ -53,7 +53,7 @@ class HomeAjax extends MY_Controller{
 			if ( ! $this->User->userExists($username) ){
 				$this->User->addUser($username, md5($password));
 				$staff = $this->kayako->getStaffByUsername($username);
-				
+
 				$this->User->update(Array('U_Username' => $this->session->userdata('username')), Array('First' => $staff->getFirstName()));
 				$this->User->update(Array('U_Username' => $this->session->userdata('username')), Array('Last' => $staff->getLastName()));
 				$this->User->update(Array('U_Username' => $this->session->userdata('username')), Array('Email' => $staff->getEmail()));
@@ -373,15 +373,20 @@ class HomeAjax extends MY_Controller{
 			$this->Ticket->update(array('TicketDisplayID' => $text), array('BarcodeImagePath'=>$myPath . '/' . $text . '.gif'));
 			$ticket = $this->Ticket->find(array('TicketDisplayID' => $text));
 
-			$this->load->library('Kayako');
-			$this->kayako->addTicketBarcode($ticket['TicketFusionID'], base_url('/cdn/img/barcodes/' . $text . '.gif'));
-
 			$this->DocumentArray['success'] = TRUE;
 			$this->DocumentArray['ImageLocation'] = base_url('/cdn/img/barcodes/' . $text . '.gif');
 		} catch ( Exception $e ){
 			log_message('error', $e->getMessage());
 			$this->DocumentArray['success'] = TRUE;
 		}
+
+		// try{
+		// 	$this->load->library('Kayako');
+		// 	$this->kayako->addTicketBarcode($ticket['TicketFusionID'], base_url('/cdn/img/barcodes/' . $text . '.gif'));
+		// } catch (Exception $e){
+		// 	log_message('error', 'Error: barcode not sent to Kayako Fusion - ' . $e->getMessage());
+		// }
+
 		$this->output->append_output(json_encode($this->DocumentArray));
 	}
 
@@ -427,7 +432,7 @@ class HomeAjax extends MY_Controller{
 		$this->DocumentArray['success'] = TRUE;
 		$this->output->append_output(json_encode($this->DocumentArray));
 	}
-	
+
 	function updateAPI(){
 		$this->load->model('APISetting');
 		foreach ( $this->input->post() as $key => $value ){

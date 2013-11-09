@@ -71,10 +71,10 @@ if($_POST) {
 						return TRUE;
 					}
 				}
-				
+
 				delete_files('../install', TRUE);
 			}
-			
+
 			$redir = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == "on") ? "https" : "http");
 			$redir .= "://".$_SERVER['HTTP_HOST'];
 			$redir .= str_replace(basename($_SERVER['SCRIPT_NAME']),"",$_SERVER['SCRIPT_NAME']);
@@ -100,7 +100,7 @@ if($_POST) {
 		<script src="assets/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript" charset="utf-8">
 			var currentPanel = 1;
-			
+
 			function nextPanel(){
 				if ( currentPanel < 3 ){
 					$("#install_panel_" + currentPanel).fadeOut(200, function(){
@@ -109,7 +109,7 @@ if($_POST) {
 					);
 				}
 			}
-			
+
 			function previousPanel(){
 				if ( currentPanel > 1){
 					$("#install_panel_" + currentPanel).fadeOut(200, function(){
@@ -125,7 +125,7 @@ if($_POST) {
 	<div class="container">
 		<div class="row">
 			<div class="span8 offset2">
-		    	<h1>Kayako Equipment Tracker Installation</h1><br/><br/>			
+		    	<h1>Kayako Equipment Tracker Installation</h1><br/><br/>
 			</div>
 		<div>
 		<div class="row">
@@ -173,7 +173,7 @@ if($_POST) {
 				</form>
 
 				<?php else: ?>
-					<p class="error">Please make the /application/config/database.php file writable. <strong>Example</strong>:<br /><br /><code>chmod 777 application/config/database.php</code></p>
+					<p class="alert alert-error">Before you can proceed, please make the /application/config/database.php file writable. <strong>Example</strong>:<br /><br /><code>chmod 777 application/config/database.php</code><br/><br/>Then reload this page.</p>
 				<?php endif; ?>
 			</div>
 		</div>

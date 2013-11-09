@@ -1,8 +1,8 @@
 /**
  * File: home.js
- * 
+ *
  * This file contains javascript exclusive to the Home page
- * 
+ *
  * @author Joseph T. Anderson <joe.anderson@email.stvincent.edu>
  * @since 2011-12-24
  * @version 2011-12-24
@@ -46,7 +46,7 @@ HomeObj.setDocumentDropdownBlur = function(){
 
 /**
  * Function submitTicketData
- * 
+ *
  * This function is tailored to aggregate the user input on the main ticket creation page and
  * POST the data to the server which will then create a ticket on the standalone database.
  * The server then attempts to contact the designated Kayako Support Suite system to create
@@ -57,11 +57,11 @@ HomeObj.setDocumentDropdownBlur = function(){
  * also calls the displayWarning funciton if the backend returns validation errors.
  * Curretnly, this function is called by both the button in the upper "fixed" menu element and
  * the submit button on the bottom of the home screen.
- * 
+ *
  * @author Joseph T. Anderson <joe.anderson@email.stvincent.edu>
  * @since 2011-10-28
  * @version 2011-11-26
- * 
+ *
  */
 
 HomeObj.submitTicketData = function(){
@@ -74,11 +74,11 @@ HomeObj.submitTicketData = function(){
 	});
 	postData['Priority'] = $('#Priority :selected').val();
 	postData['Department'] = $('#Department :selected').val();
-	
+
 	if ( $('#display_deadline').val() == "" ){
 		postData['Deadline'] = "";
 	}
-	
+
 	var equipmentArray = $('#equipment_table [id*=Equipment_]').not('#Equipment_DEFAULT');
 	equipmentArray.each( function(){
 		postData['Equipment['+$(this).attr('id')+'][Make]'] = $(this).find('#Make').val();
@@ -86,11 +86,11 @@ HomeObj.submitTicketData = function(){
 		postData['Equipment['+$(this).attr('id')+'][Type]'] = $(this).find('#Type').val();
 		postData['Equipment['+$(this).attr('id')+'][Notes]'] = $(this).find('#Notes').val();
 	});
-	
+
 	$.post(BASE_URL + '/homeAjax/submitTicketData', postData, function(json){
 		if ( json != undefined && json['success'] == true ){
 			$('#waiting_message').html('Sending to Kayako Fusion...');
-			
+
 			// @TODO: Should the request to Kayako be made first and then write the ticket to the local DB?
 			// Post a request to create the KF ticket
 			$.post(BASE_URL + '/homeAjax/syncTicketWithFusion',{
@@ -122,16 +122,16 @@ HomeObj.submitTicketData = function(){
 
 /**
  * Function toggleCollapse
- * 
+ *
  * This function was implemented early to emulate more complicated functionality of the
  * jquery.collapse.js library.  Customized for the equipment data blocks.
- * 
+ *
  * @author Joseph T. Anderson <joe.anderson@email.stvincent.edu>
  * @since 2011-11-15
  * @version 2011-11-16
- * 
+ *
  * @param obj This is the button used clicked to initiate the collapse.
- * 
+ *
  */
 
 HomeObj.toggleEquipmentCollapse = function(obj){
@@ -153,17 +153,17 @@ HomeObj.toggleEquipmentCollapse = function(obj){
 
 /**
  * Function setEquipmentTitle
- * 
+ *
  * Uses the user input to the "Make" and "Model" fields of the equipment data
  * to change the default equipment name to a more meaningful value.  This title
  * will not itself be passed to the server when the ticket is created.
- * 
+ *
  * @author Joseph T. Anderson <joe.anderson@email.stvincent.edu>
  * @since 2011-11-17
  * @version 2011-11-17
- * 
+ *
  * @param obj The input field being changed.
- * 
+ *
  */
 
 HomeObj.setEquipmentTitle = function(obj){
@@ -183,15 +183,15 @@ HomeObj.setEquipmentTitle = function(obj){
 
 /**
  * Function addEquipment
- * 
+ *
  * When called, this funciton clones the template element, whose id is equipment_DEFAULT,
  * and clones it.  The id is then altered to be an incremental value based on how many
  * existing equipment blocks are already on the screen.
- * 
+ *
  * @author Joseph T. Anderson <joe.anderson@email.stvincent.edu>
  * @since 2011-11-17
  * @version 2011-11-17
- * 
+ *
  */
 
 HomeObj.addEquipment = function(){
@@ -210,7 +210,7 @@ HomeObj.addEquipment = function(){
 
 /**
  * Function removeEquipment
- * 
+ *
  * This function not only removes and equipment block fromt the screen, but
  * also manages the id's of the onscreen equipment blocks.  Ex: if there are
  * three equipment blocks on the screen and the middle one gets removed, the
@@ -218,13 +218,13 @@ HomeObj.addEquipment = function(){
  * second one becomes equipment_1 and the third becomes equipment_2.  If for
  * some reason jquery pulls the remaining blocks out of order, they are sorted
  * according to the integer at the end of their id and then the renaming process begins.
- * 
+ *
  * @author Joseph T. Anderson <joe.anderson@email.stvincent.edu>
  * @since 2011-11-17
  * @version 2011-11-17
- * 
+ *
  * @param obj The button used to initiate the removal.
- * 
+ *
  */
 
 HomeObj.removeEquipment = function(obj){
@@ -245,17 +245,17 @@ HomeObj.removeEquipment = function(obj){
 
 /**
  * Function fetchBarcode
- * 
+ *
  * This funciton requests a bar code from the server based on a particular text parameter.
  * The text parameter is sanatized on the server-side function. All letters are converted
  * to uppercase and spaces are converted to hyphens. Other characters are removed.
- * 
+ *
  * @author Joseph T. Anderson <joe.anderson@email.stvincent.edu>
  * @since 2011-11-19
  * @version 2011-11-22
- * 
+ *
  * @param text The text used to create the bar code
- * 
+ *
  * @return JQuery An Image element containing the barcode
  */
 
@@ -295,7 +295,7 @@ HomeObj.fetchBarcode = function(text){
 
 /**
  * Function: HomeObj.setTabEvents
- * 
+ *
  * @author Joseph T. Anderson <joe.anderson@email.stvincent.edu>
  * @since 2012-01-26
  * @version 2012-01-26
